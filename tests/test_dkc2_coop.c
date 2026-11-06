@@ -2540,7 +2540,7 @@ static void TestCartScriptedExit(void) {
                   variant == 0 ? (seat ? 603 : 600) : 590);
         ExpectU16("cart placement preserves scripted exit action", cpu_read16(&cpu, 0, kong+0x2E), 0x70);
         if (variant == 0) {
-          WriteWord(0xE9E+6, 950); Dkc2CoopCartSeats(&cpu);
+          WriteWord(0xE9E + 6, 950); Dkc2CoopCartSeats(&cpu);
           ExpectU16("exit rider continues across viewport", cpu_read16(&cpu, 0, kong+6), seat ? 936 : 950);
           cpu.X=kong; WriteWord(who ? kDkc2CoopP2Pressed : kDkc2CoopP1Pressed, 0x8000);
           ExpectU16("jump cannot cancel scripted cart exit", Dkc2CoopSelectStateWord(&cpu, 0x70), 0x70);

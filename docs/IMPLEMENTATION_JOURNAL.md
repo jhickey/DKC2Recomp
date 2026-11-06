@@ -8499,3 +8499,27 @@ generation, mapping old names to new and ignoring line order, found no
 difference in any of the 2,798 C files beyond the renames. Only the
 emitter's cache file differs. Test results were unchanged, including the
 same six co-op failure messages.
+
+## 2026-11-05 - Merging PR #1 with the dkc2-c function names
+
+Merged PR #1 (`codex/simultaneous-coop-improvements`, head `595ce6c`) onto
+the dkc2-c function-name commit. Git reported only documentation conflicts,
+which were resolved by keeping both sides. The PR's co-op camera overrides
+anchored on the generic `CODE_B5E560`, which the symbol import renamed to
+`clamp_camera_to_level_bounds`. The anchor and its missing-anchor test now
+use the new name, and the 23 override unit tests pass.
+
+Clang rejected `0xE9E+6` in `tests/test_dkc2_coop.c`: C lexes it as one
+invalid preprocessing number because `E+` reads as an exponent. Spacing the
+operator fixes the macOS build without changing the value.
+
+The merged generation was compared with a separate generation of the
+unmodified PR head, with the CMake-time Kongs and MSU-1 overrides applied to
+both. All 2,798 C files are identical apart from the 46 renames. On macOS,
+74 tests are configured and 66 pass. The eight failures are private co-op
+integration checks: the six recorded above plus the PR's new
+`supplied_rom_coop_item_input` and `supplied_rom_coop_rescue`. Several report
+"not in TEAM gameplay". Because the generated code matches the PR, these are
+macOS behavior of the PR code itself, not merge defects. The cause remains
+undiagnosed. A pre-existing Windows-1252 byte (0x97) in a PR changelog
+heading was left unchanged.
