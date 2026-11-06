@@ -8523,3 +8523,43 @@ integration checks: the six recorded above plus the PR's new
 macOS behavior of the PR code itself, not merge defects. The cause remains
 undiagnosed. A pre-existing Windows-1252 byte (0x97) in a PR changelog
 heading was left unchanged.
+
+## 2026-11-05 - Native analyzer fix for never-returning calls
+
+The macOS co-op failures came from the native (Rust) analyzer, not from
+co-op code. It flagged every JSR/JSL without a decoded continuation as a
+truncated call, including calls into callees with a proven empty exit set.
+Those callers became LLE-only, and their own proven empty exit facts were
+discarded each round. In this ROM the debug-exit cheat check at `$80:8AEA`
+reaches the level-exit chain (`$BB:BDB7` into the `$B5:CE1A`-`$B5:CEB0`
+inline-argument chain). That made `input_and_pause_handler` and every
+gameplay sub-mode handler LLE-only: 84 variants instead of 2. Code-level
+co-op overrides in generated C were therefore bypassed. The Python oracle
+already treated an empty exit set as a positive terminal edge.
+
+The fix lives in the `snesrecomp` submodule (local commit `32a0846`; see
+`third_party/snesrecomp/README.md`). Proven never-returning call sites no
+longer count as truncated. For exactness, a call with no lexical
+continuation now emits `interp_tier_dispatch_tail` at the real
+continuation if the callee ever resumes it, replacing a bare host return
+that would have left the JSR frame on the guest stack. The Rust
+declared-table reader also gained the Python null-slot rule from `3a929cd`,
+which removed the remaining sprite sub-state dispatcher truncation at
+`$B3:CB3D`.
+
+Native regeneration now reports 3,325 roots, 3,475 exact AOT and 2 LLE
+variants across 13 banks, matching the documented convergence. The
+2 remaining LLE variants (`$BA:B33F`/`$BA:B342`, M1X0) are structurally
+poisoned by BRK/COP data on an original-game fault path.
+
+Validation on macOS: the pre-merge `dkc2c-function-names` tree passes all
+69 tests, including the six co-op checks that failed before. The merged PR
+#1 tree passes 70 of 74. The remaining failures are `supplied_rom_coop_barrels`,
+`_rescue`, `_lifecycle` and `_handoff`. Crossing scripts and builds shows
+`barrels` and `handoff` pass on the pre-PR runtime with unchanged scripts,
+so they fail because of PR #1 runtime changes. The first divergence on the
+lifecycle route is the camera moving to the players' midpoint at frame 3179.
+PR #1's edited lifecycle route fails on both runtimes, and `rescue` is new.
+The PR's recorded validation did not run any of these four checks. Whether
+they reflect co-op regressions or routes invalidated by the intended camera
+change is unresolved.

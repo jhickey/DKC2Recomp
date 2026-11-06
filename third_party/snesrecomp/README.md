@@ -47,6 +47,25 @@ trace-enabled APU lock declarations, and propagate a clean interpreted guest
 non-local return through the compiled call bridge. The latter is covered by a
 synthetic M=0 `PLA; RTL` bridge case and is required by Swanky's Bonus Bonanza.
 
+## 2026-11-05 never-returning call fix (local, unpushed)
+
+- Base: `3a929cd30336f2b3a077df17912719be63142299`, the previous submodule pin
+  (on `elliotttate/snesrecomp` branch `dkc2-widescreen-presentation-v0.0.4`).
+- Local branch `fix-never-returning-call-aot`, commit
+  `32a0846`. It exists only in this checkout until it is pushed to the
+  submodule remote; a fresh clone cannot fetch it until then.
+- The Rust analyzer no longer treats a JSR/JSL into a callee with a proven
+  empty exit set as a truncated continuation. Unknown-exit calls remain
+  truncated. The emitter keeps such code exact: if the callee ever resumes
+  the site, the caller continues through `interp_tier_dispatch_tail` at the
+  lexical continuation (inline-argument skip included) instead of returning
+  with the JSR frame still on the guest stack.
+- The Rust declared-table reader now reads a `$0000` slot as a null entry,
+  porting the Python decoder rule from `3a929cd`.
+- On the supported ROM, native analysis went from 3,393 exact AOT and 84 LLE
+  variants to the documented 3,325 roots, 3,475 exact AOT and 2 LLE. The
+  Python v2 suite (378 tests) and Rust tests (56 + 3) pass.
+
 ## License status
 
 SNESrecomp does not currently declare a project-wide license or provide a
