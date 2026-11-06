@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Named 46 previously generic camera, level-loading and terrain-streaming
+  routines in the symbol database and recompiler configuration, using
+  research from the dkc2-c project. Generated code is unchanged apart from
+  function names.
+- Recorded the first macOS source build since v0.0.6: 63 of 69 tests pass;
+  the six private co-op integration checks fail and remain open.
+
 ## 0.0.8 (alpha) - 2026-09-13
 
 - Fixed Player 2 grabbing ropes in simultaneous TEAM mode. Rope reactions now

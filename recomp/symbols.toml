@@ -185,3 +185,417 @@ confidence = "contextual"
 tags = ["camera", "sprite"]
 provenance = "Yoshifanatic1 contextual alias; supported-ROM CFG boundary"
 note = "Context-qualified continuation of camera-unlock trigger behavior."
+
+[[function]]
+address = "B5:AC9C"
+name = "build_horizontal_level_column"
+aliases = ["CODE_B5AC9C"]
+confidence = "confirmed"
+tags = ["background", "terrain-streaming", "widescreen"]
+provenance = "dkc2-c 8180459 C port and research notes; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Builds one terrain column for horizontally scrolling levels."
+
+[[function]]
+address = "B5:AEA7"
+name = "build_horizontal_level_row"
+aliases = ["CODE_B5AEA7"]
+confidence = "confirmed"
+tags = ["background", "terrain-streaming", "widescreen"]
+provenance = "dkc2-c 8180459 C port and research notes; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Builds one terrain row for horizontally scrolling levels."
+
+[[function]]
+address = "B5:B322"
+name = "build_square_level_column"
+aliases = ["CODE_B5B322"]
+confidence = "confirmed"
+tags = ["background", "terrain-streaming", "widescreen"]
+provenance = "dkc2-c 8180459 C port and research notes; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Builds one terrain column for the square scroll-style family."
+
+[[function]]
+address = "B5:B788"
+name = "build_vertical_level_column"
+aliases = ["CODE_B5B788"]
+confidence = "confirmed"
+tags = ["background", "terrain-streaming", "widescreen"]
+provenance = "dkc2-c 8180459 C port and research notes; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Builds one terrain column for vertically scrolling levels."
+
+[[function]]
+address = "B5:BCA8"
+name = "set_level_tileset_pointers"
+aliases = ["CODE_B5BCA8"]
+confidence = "confirmed"
+tags = ["level-load", "terrain-streaming"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Selects the tileset pointers for the level being loaded."
+
+[[function]]
+address = "B5:E552"
+name = "clamp_camera_to_level_bounds"
+aliases = ["CODE_B5E560"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: clamp camera to level bounds."
+
+[[function]]
+address = "B5:E5AC"
+name = "compute_camera_x_target"
+aliases = ["CODE_B5E5BA"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: compute camera x target."
+
+[[function]]
+address = "B5:E5EC"
+name = "compute_camera_x_target_oscillating"
+aliases = ["CODE_B5E5FA"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: compute camera x target oscillating."
+
+[[function]]
+address = "B5:E652"
+name = "compute_camera_y_target"
+aliases = ["CODE_B5E660"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: compute camera y target."
+
+[[function]]
+address = "B5:E6F7"
+name = "camera_y_subtract_speed"
+aliases = ["CODE_B5E705"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: camera y subtract speed."
+
+[[function]]
+address = "B5:E721"
+name = "negate_camera_scratch_32"
+aliases = ["CODE_B5E72F"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: negate camera scratch 32."
+
+[[function]]
+address = "B5:E73B"
+name = "compute_camera_y_target_oscillating"
+aliases = ["CODE_B5E749"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: compute camera y target oscillating."
+
+[[function]]
+address = "B5:E7AB"
+name = "compute_camera_y_target_passthrough"
+aliases = ["CODE_B5E7B9"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: compute camera y target passthrough."
+
+[[function]]
+address = "B5:E7C5"
+name = "camera_zone_bounds_handler_store_x_edge"
+aliases = ["CODE_B5E7D3"]
+confidence = "contextual"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Internal continuation of camera handling: camera zone bounds handler store x edge."
+
+[[function]]
+address = "B5:E914"
+name = "check_zone_x_min_link"
+aliases = ["CODE_B5E922"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: check zone x min link."
+
+[[function]]
+address = "B5:E946"
+name = "check_zone_x_max_link"
+aliases = ["CODE_B5E954"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: check zone x max link."
+
+[[function]]
+address = "B5:E94D"
+name = "check_zone_x_max_link_body"
+aliases = ["CODE_B5E95B"]
+confidence = "contextual"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Internal continuation of camera handling: check zone x max link body."
+
+[[function]]
+address = "B5:E97E"
+name = "check_zone_y_min_link"
+aliases = ["CODE_B5E98C"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: check zone y min link."
+
+[[function]]
+address = "B5:E9B0"
+name = "check_zone_y_max_link"
+aliases = ["CODE_B5E9BE"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: check zone y max link."
+
+[[function]]
+address = "B5:E9EA"
+name = "finalize_camera_edges"
+aliases = ["CODE_B5E9F8"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: finalize camera edges."
+
+[[function]]
+address = "B5:EA2E"
+name = "interpolate_camera_zone_bounds"
+aliases = ["CODE_B5EA3C"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: interpolate camera zone bounds."
+
+[[function]]
+address = "B5:EB8C"
+name = "get_camera_zone_y_interp_weight"
+aliases = ["CODE_B5EB9A"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: get camera zone y interp weight."
+
+[[function]]
+address = "B5:EBAD"
+name = "get_camera_zone_x_interp_weight"
+aliases = ["CODE_B5EBBB"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: get camera zone x interp weight."
+
+[[function]]
+address = "B5:EC55"
+name = "find_replacement_camera_zone"
+aliases = ["CODE_B5EC63"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: find replacement camera zone."
+
+[[function]]
+address = "B5:ECD0"
+name = "zone_contains_camera_x"
+aliases = ["CODE_B5ECDE"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: zone contains camera x."
+
+[[function]]
+address = "B5:ECEF"
+name = "zone_contains_camera_y"
+aliases = ["CODE_B5ECFD"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: zone contains camera y."
+
+[[function]]
+address = "B5:ECF6"
+name = "zone_contains_camera_y_body"
+aliases = ["CODE_B5ED04"]
+confidence = "contextual"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Internal continuation of camera handling: zone contains camera y body."
+
+[[function]]
+address = "B5:ED10"
+name = "check_zone_reciprocal_link"
+aliases = ["CODE_B5ED1E"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: check zone reciprocal link."
+
+[[function]]
+address = "B5:ED2C"
+name = "find_camera_zone_from_scratch"
+aliases = ["CODE_B5ED3A"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: find camera zone from scratch."
+
+[[function]]
+address = "B5:ED62"
+name = "finalize_camera_scroll"
+aliases = ["CODE_B5ED70"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: finalize camera scroll."
+
+[[function]]
+address = "B5:EE6B"
+name = "decay_camera_screen_shake"
+aliases = ["CODE_B5EE79"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: decay camera screen shake."
+
+[[function]]
+address = "B5:EEB1"
+name = "interpolate_camera_scroll_x"
+aliases = ["CODE_B5EEBF"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: interpolate camera scroll x."
+
+[[function]]
+address = "B5:EF89"
+name = "interpolate_camera_scroll_y"
+aliases = ["CODE_B5EF97"]
+confidence = "confirmed"
+tags = ["camera", "widescreen"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Camera handler helper: interpolate camera scroll y."
+
+[[function]]
+address = "BB:AEFF"
+name = "load_level_config"
+aliases = ["CODE_BBAF0C"]
+confidence = "confirmed"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Loads the level configuration record for a level number."
+
+[[function]]
+address = "BB:AFE1"
+name = "CODE_BBAF0F_skip_unlock_requirement"
+aliases = ["CODE_BBAFEE"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: skip unlock requirement."
+
+[[function]]
+address = "BB:AFF5"
+name = "CODE_BBAF0F_read_ppu_and_vram_payload"
+aliases = ["CODE_BBB002"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read ppu and vram payload."
+
+[[function]]
+address = "BB:B008"
+name = "CODE_BBAF0F_read_graphics_dma_song_palette"
+aliases = ["CODE_BBB015"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read graphics dma song palette."
+
+[[function]]
+address = "BB:B027"
+name = "CODE_BBAF0F_read_slope_and_init_routines"
+aliases = ["CODE_BBB034"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read slope and init routines."
+
+[[function]]
+address = "BB:B036"
+name = "CODE_BBAF0F_read_nmi_and_game_sub_mode"
+aliases = ["CODE_BBB043"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read nmi and game sub mode."
+
+[[function]]
+address = "BB:B045"
+name = "CODE_BBAF0F_read_tileset_type"
+aliases = ["CODE_BBB052"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read tileset type."
+
+[[function]]
+address = "BB:B04F"
+name = "CODE_BBAF0F_read_animal"
+aliases = ["CODE_BBB05C"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read animal."
+
+[[function]]
+address = "BB:B059"
+name = "CODE_BBAF0F_read_unknown_38_and_camera_control"
+aliases = ["CODE_BBB066"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read unknown 38 and camera control."
+
+[[function]]
+address = "BB:B06A"
+name = "CODE_BBAF0F_read_effects"
+aliases = ["CODE_BBB077"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read effects."
+
+[[function]]
+address = "BB:B082"
+name = "CODE_BBAF0F_read_extra_unlocks_ptr"
+aliases = ["CODE_BBB08F"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read extra unlocks ptr."
+
+[[function]]
+address = "BB:B088"
+name = "CODE_BBAF0F_read_destinations"
+aliases = ["CODE_BBB095"]
+confidence = "contextual"
+tags = ["level-load"]
+provenance = "dkc2-c 8180459 local label; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Level-config loader step: read destinations."
+
+[[function]]
+address = "BC:FBCC"
+name = "mirror_sprite_clipping"
+aliases = ["CODE_BCFBCC"]
+confidence = "confirmed"
+tags = ["collision", "sprite"]
+provenance = "dkc2-c 8180459 harness-verified C port; v1.0 placement from byte-exact v1.0 reassembly"
+note = "Sprite clipping helper ported with get_current_sprite_clipping."

@@ -6371,3 +6371,39 @@ in the release notes. The feature baseline is the complete 86-test pass above.
 GitHub inspection found no newer Mac artifact than v0.0.6; the release carries
 that original archive and checksum, with its older feature coverage explicitly
 labelled. Source-only changes are committed; release archives stay outside Git.
+
+## 2026-11-05 - macOS source build and dkc2-c function names
+
+Built the native macOS app from source on Apple silicon with
+`build_macos.sh` and the hash-verified private v1.0 ROM. The owner launched
+the app and played. Release-mode `ctest` on `build/macos` passes 63 of 69
+tests. The six failures are the private `supplied_rom_coop_*` integration
+checks (route, combat, barrels, carry, lifecycle, handoff), for example "P2
+did not retain independent movement" and "p1: nearby pickup rejected". The
+v0.0.8 notes record that co-op was never built or run on a Mac, so this is
+the first macOS run of those checks. They remain open and undiagnosed. The
+non-ROM `build/` suite passes all 49 tests. This regeneration reports 3,393
+exact AOT and 84 LLE variants, not the documented 3,475 and 2. The figures
+are identical before and after this change, so the difference already
+existed on this host. It is not yet explained.
+
+Added 46 semantic function names to `recomp/symbols.toml` from the owner's
+`dkc2-c` research project (commit `8180459`): camera handling and zone
+helpers, the scroll-style terrain column/row builders, `load_level_config`
+and its read steps, `set_level_tileset_pointers` and
+`mirror_sprite_clipping`. The `dkc2-c` disassembly (H4v0c21-derived, built
+for v1.1 by default) was reassembled with `-Dversion=0`, reproducing the
+supported ROM's SHA-256 exactly, so each label's v1.0 address comes from that
+reassembly and not from v1.1 addresses in names. Every entry keeps its
+previous `CODE_` name as an alias. Routines with a `dkc2-c` C port or
+explicit label verification are `confirmed`; internal continuations and
+read steps are `contextual`. Three nested generic labels
+(`CODE_BBC174_CODE_BBC4xx`) were not imported. No assembly, comments or
+ROM data were copied.
+
+`build_dkc2_symbol_database.py --apply-cfg` renamed the 46 CFG entries. A
+normalized comparison of the regenerated sources against the previous
+generation, mapping old names to new and ignoring line order, found no
+difference in any of the 2,798 C files beyond the renames. Only the
+emitter's cache file differs. Test results were unchanged, including the
+same six co-op failure messages.

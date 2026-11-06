@@ -5562,21 +5562,21 @@ RecompReturn dma_ship_deck_rigging_rows_M0X0(CpuState *cpu);
 RecompReturn dma_ship_deck_rigging_rows_M0X1(CpuState *cpu);
 RecompReturn dma_ship_deck_rigging_rows_M1X0(CpuState *cpu);
 RecompReturn dma_ship_deck_rigging_rows_M1X1(CpuState *cpu);
-void CODE_B5AC9C(CpuState *cpu);  /* $B5:AC9C alias */
-RecompReturn CODE_B5AC9C_M0X0(CpuState *cpu);
-RecompReturn CODE_B5AC9C_M0X1(CpuState *cpu);
-RecompReturn CODE_B5AC9C_M1X0(CpuState *cpu);
-RecompReturn CODE_B5AC9C_M1X1(CpuState *cpu);
+void build_horizontal_level_column(CpuState *cpu);  /* $B5:AC9C alias */
+RecompReturn build_horizontal_level_column_M0X0(CpuState *cpu);
+RecompReturn build_horizontal_level_column_M0X1(CpuState *cpu);
+RecompReturn build_horizontal_level_column_M1X0(CpuState *cpu);
+RecompReturn build_horizontal_level_column_M1X1(CpuState *cpu);
 void dma_level_columns(CpuState *cpu);  /* $B5:ADD8 alias */
 RecompReturn dma_level_columns_M0X0(CpuState *cpu);
 RecompReturn dma_level_columns_M0X1(CpuState *cpu);
 RecompReturn dma_level_columns_M1X0(CpuState *cpu);
 RecompReturn dma_level_columns_M1X1(CpuState *cpu);
-void CODE_B5AEA7(CpuState *cpu);  /* $B5:AEA7 alias */
-RecompReturn CODE_B5AEA7_M0X0(CpuState *cpu);
-RecompReturn CODE_B5AEA7_M0X1(CpuState *cpu);
-RecompReturn CODE_B5AEA7_M1X0(CpuState *cpu);
-RecompReturn CODE_B5AEA7_M1X1(CpuState *cpu);
+void build_horizontal_level_row(CpuState *cpu);  /* $B5:AEA7 alias */
+RecompReturn build_horizontal_level_row_M0X0(CpuState *cpu);
+RecompReturn build_horizontal_level_row_M0X1(CpuState *cpu);
+RecompReturn build_horizontal_level_row_M1X0(CpuState *cpu);
+RecompReturn build_horizontal_level_row_M1X1(CpuState *cpu);
 void dma_level_rows(CpuState *cpu);  /* $B5:B00B alias */
 RecompReturn dma_level_rows_M0X0(CpuState *cpu);
 RecompReturn dma_level_rows_M0X1(CpuState *cpu);
@@ -5592,11 +5592,11 @@ RecompReturn CODE_B5B317_M0X0(CpuState *cpu);
 RecompReturn CODE_B5B317_M0X1(CpuState *cpu);
 RecompReturn CODE_B5B317_M1X0(CpuState *cpu);
 RecompReturn CODE_B5B317_M1X1(CpuState *cpu);
-void CODE_B5B322(CpuState *cpu);  /* $B5:B322 alias */
-RecompReturn CODE_B5B322_M0X0(CpuState *cpu);
-RecompReturn CODE_B5B322_M0X1(CpuState *cpu);
-RecompReturn CODE_B5B322_M1X0(CpuState *cpu);
-RecompReturn CODE_B5B322_M1X1(CpuState *cpu);
+void build_square_level_column(CpuState *cpu);  /* $B5:B322 alias */
+RecompReturn build_square_level_column_M0X0(CpuState *cpu);
+RecompReturn build_square_level_column_M0X1(CpuState *cpu);
+RecompReturn build_square_level_column_M1X0(CpuState *cpu);
+RecompReturn build_square_level_column_M1X1(CpuState *cpu);
 void square_level_scroll_handler(CpuState *cpu);  /* $B5:B54A alias */
 RecompReturn square_level_scroll_handler_M0X0(CpuState *cpu);
 RecompReturn square_level_scroll_handler_M0X1(CpuState *cpu);
@@ -5612,11 +5612,11 @@ RecompReturn CODE_B5B77D_M0X0(CpuState *cpu);
 RecompReturn CODE_B5B77D_M0X1(CpuState *cpu);
 RecompReturn CODE_B5B77D_M1X0(CpuState *cpu);
 RecompReturn CODE_B5B77D_M1X1(CpuState *cpu);
-void CODE_B5B788(CpuState *cpu);  /* $B5:B788 alias */
-RecompReturn CODE_B5B788_M0X0(CpuState *cpu);
-RecompReturn CODE_B5B788_M0X1(CpuState *cpu);
-RecompReturn CODE_B5B788_M1X0(CpuState *cpu);
-RecompReturn CODE_B5B788_M1X1(CpuState *cpu);
+void build_vertical_level_column(CpuState *cpu);  /* $B5:B788 alias */
+RecompReturn build_vertical_level_column_M0X0(CpuState *cpu);
+RecompReturn build_vertical_level_column_M0X1(CpuState *cpu);
+RecompReturn build_vertical_level_column_M1X0(CpuState *cpu);
+RecompReturn build_vertical_level_column_M1X1(CpuState *cpu);
 void vertical_level_scroll_handler(CpuState *cpu);  /* $B5:B9A5 alias */
 RecompReturn vertical_level_scroll_handler_M0X0(CpuState *cpu);
 RecompReturn vertical_level_scroll_handler_M0X1(CpuState *cpu);
@@ -5652,11 +5652,11 @@ RecompReturn CODE_B5BADE_M0X0(CpuState *cpu);
 RecompReturn CODE_B5BADE_M0X1(CpuState *cpu);
 RecompReturn CODE_B5BADE_M1X0(CpuState *cpu);
 RecompReturn CODE_B5BADE_M1X1(CpuState *cpu);
-void CODE_B5BCA8(CpuState *cpu);  /* $B5:BCA8 alias */
-RecompReturn CODE_B5BCA8_M0X0(CpuState *cpu);
-RecompReturn CODE_B5BCA8_M0X1(CpuState *cpu);
-RecompReturn CODE_B5BCA8_M1X0(CpuState *cpu);
-RecompReturn CODE_B5BCA8_M1X1(CpuState *cpu);
+void set_level_tileset_pointers(CpuState *cpu);  /* $B5:BCA8 alias */
+RecompReturn set_level_tileset_pointers_M0X0(CpuState *cpu);
+RecompReturn set_level_tileset_pointers_M0X1(CpuState *cpu);
+RecompReturn set_level_tileset_pointers_M1X0(CpuState *cpu);
+RecompReturn set_level_tileset_pointers_M1X1(CpuState *cpu);
 void CODE_B5C2DB(CpuState *cpu);  /* $B5:C2DB alias */
 RecompReturn CODE_B5C2DB_M0X0(CpuState *cpu);
 RecompReturn CODE_B5C2DB_M0X1(CpuState *cpu);
@@ -6337,146 +6337,146 @@ RecompReturn camera_handler_M0X0(CpuState *cpu);
 RecompReturn camera_handler_M0X1(CpuState *cpu);
 RecompReturn camera_handler_M1X0(CpuState *cpu);
 RecompReturn camera_handler_M1X1(CpuState *cpu);
-void CODE_B5E560(CpuState *cpu);  /* $B5:E552 alias */
-RecompReturn CODE_B5E560_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E560_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E560_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E560_M1X1(CpuState *cpu);
-void CODE_B5E5BA(CpuState *cpu);  /* $B5:E5AC alias */
-RecompReturn CODE_B5E5BA_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E5BA_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E5BA_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E5BA_M1X1(CpuState *cpu);
-void CODE_B5E5FA(CpuState *cpu);  /* $B5:E5EC alias */
-RecompReturn CODE_B5E5FA_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E5FA_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E5FA_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E5FA_M1X1(CpuState *cpu);
-void CODE_B5E660(CpuState *cpu);  /* $B5:E652 alias */
-RecompReturn CODE_B5E660_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E660_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E660_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E660_M1X1(CpuState *cpu);
-void CODE_B5E705(CpuState *cpu);  /* $B5:E6F7 alias */
-RecompReturn CODE_B5E705_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E705_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E705_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E705_M1X1(CpuState *cpu);
-void CODE_B5E72F(CpuState *cpu);  /* $B5:E721 alias */
-RecompReturn CODE_B5E72F_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E72F_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E72F_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E72F_M1X1(CpuState *cpu);
-void CODE_B5E749(CpuState *cpu);  /* $B5:E73B alias */
-RecompReturn CODE_B5E749_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E749_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E749_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E749_M1X1(CpuState *cpu);
-void CODE_B5E7B9(CpuState *cpu);  /* $B5:E7AB alias */
-RecompReturn CODE_B5E7B9_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E7B9_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E7B9_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E7B9_M1X1(CpuState *cpu);
-void CODE_B5E7D3(CpuState *cpu);  /* $B5:E7C5 alias */
-RecompReturn CODE_B5E7D3_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E7D3_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E7D3_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E7D3_M1X1(CpuState *cpu);
-void CODE_B5E922(CpuState *cpu);  /* $B5:E914 alias */
-RecompReturn CODE_B5E922_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E922_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E922_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E922_M1X1(CpuState *cpu);
-void CODE_B5E954(CpuState *cpu);  /* $B5:E946 alias */
-RecompReturn CODE_B5E954_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E954_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E954_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E954_M1X1(CpuState *cpu);
-void CODE_B5E95B(CpuState *cpu);  /* $B5:E94D alias */
-RecompReturn CODE_B5E95B_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E95B_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E95B_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E95B_M1X1(CpuState *cpu);
-void CODE_B5E98C(CpuState *cpu);  /* $B5:E97E alias */
-RecompReturn CODE_B5E98C_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E98C_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E98C_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E98C_M1X1(CpuState *cpu);
-void CODE_B5E9BE(CpuState *cpu);  /* $B5:E9B0 alias */
-RecompReturn CODE_B5E9BE_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E9BE_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E9BE_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E9BE_M1X1(CpuState *cpu);
-void CODE_B5E9F8(CpuState *cpu);  /* $B5:E9EA alias */
-RecompReturn CODE_B5E9F8_M0X0(CpuState *cpu);
-RecompReturn CODE_B5E9F8_M0X1(CpuState *cpu);
-RecompReturn CODE_B5E9F8_M1X0(CpuState *cpu);
-RecompReturn CODE_B5E9F8_M1X1(CpuState *cpu);
-void CODE_B5EA3C(CpuState *cpu);  /* $B5:EA2E alias */
-RecompReturn CODE_B5EA3C_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EA3C_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EA3C_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EA3C_M1X1(CpuState *cpu);
-void CODE_B5EB9A(CpuState *cpu);  /* $B5:EB8C alias */
-RecompReturn CODE_B5EB9A_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EB9A_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EB9A_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EB9A_M1X1(CpuState *cpu);
-void CODE_B5EBBB(CpuState *cpu);  /* $B5:EBAD alias */
-RecompReturn CODE_B5EBBB_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EBBB_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EBBB_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EBBB_M1X1(CpuState *cpu);
-void CODE_B5EC63(CpuState *cpu);  /* $B5:EC55 alias */
-RecompReturn CODE_B5EC63_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EC63_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EC63_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EC63_M1X1(CpuState *cpu);
-void CODE_B5ECDE(CpuState *cpu);  /* $B5:ECD0 alias */
-RecompReturn CODE_B5ECDE_M0X0(CpuState *cpu);
-RecompReturn CODE_B5ECDE_M0X1(CpuState *cpu);
-RecompReturn CODE_B5ECDE_M1X0(CpuState *cpu);
-RecompReturn CODE_B5ECDE_M1X1(CpuState *cpu);
-void CODE_B5ECFD(CpuState *cpu);  /* $B5:ECEF alias */
-RecompReturn CODE_B5ECFD_M0X0(CpuState *cpu);
-RecompReturn CODE_B5ECFD_M0X1(CpuState *cpu);
-RecompReturn CODE_B5ECFD_M1X0(CpuState *cpu);
-RecompReturn CODE_B5ECFD_M1X1(CpuState *cpu);
-void CODE_B5ED04(CpuState *cpu);  /* $B5:ECF6 alias */
-RecompReturn CODE_B5ED04_M0X0(CpuState *cpu);
-RecompReturn CODE_B5ED04_M0X1(CpuState *cpu);
-RecompReturn CODE_B5ED04_M1X0(CpuState *cpu);
-RecompReturn CODE_B5ED04_M1X1(CpuState *cpu);
-void CODE_B5ED1E(CpuState *cpu);  /* $B5:ED10 alias */
-RecompReturn CODE_B5ED1E_M0X0(CpuState *cpu);
-RecompReturn CODE_B5ED1E_M0X1(CpuState *cpu);
-RecompReturn CODE_B5ED1E_M1X0(CpuState *cpu);
-RecompReturn CODE_B5ED1E_M1X1(CpuState *cpu);
-void CODE_B5ED3A(CpuState *cpu);  /* $B5:ED2C alias */
-RecompReturn CODE_B5ED3A_M0X0(CpuState *cpu);
-RecompReturn CODE_B5ED3A_M0X1(CpuState *cpu);
-RecompReturn CODE_B5ED3A_M1X0(CpuState *cpu);
-RecompReturn CODE_B5ED3A_M1X1(CpuState *cpu);
-void CODE_B5ED70(CpuState *cpu);  /* $B5:ED62 alias */
-RecompReturn CODE_B5ED70_M0X0(CpuState *cpu);
-RecompReturn CODE_B5ED70_M0X1(CpuState *cpu);
-RecompReturn CODE_B5ED70_M1X0(CpuState *cpu);
-RecompReturn CODE_B5ED70_M1X1(CpuState *cpu);
-void CODE_B5EE79(CpuState *cpu);  /* $B5:EE6B alias */
-RecompReturn CODE_B5EE79_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EE79_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EE79_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EE79_M1X1(CpuState *cpu);
-void CODE_B5EEBF(CpuState *cpu);  /* $B5:EEB1 alias */
-RecompReturn CODE_B5EEBF_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EEBF_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EEBF_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EEBF_M1X1(CpuState *cpu);
-void CODE_B5EF97(CpuState *cpu);  /* $B5:EF89 alias */
-RecompReturn CODE_B5EF97_M0X0(CpuState *cpu);
-RecompReturn CODE_B5EF97_M0X1(CpuState *cpu);
-RecompReturn CODE_B5EF97_M1X0(CpuState *cpu);
-RecompReturn CODE_B5EF97_M1X1(CpuState *cpu);
+void clamp_camera_to_level_bounds(CpuState *cpu);  /* $B5:E552 alias */
+RecompReturn clamp_camera_to_level_bounds_M0X0(CpuState *cpu);
+RecompReturn clamp_camera_to_level_bounds_M0X1(CpuState *cpu);
+RecompReturn clamp_camera_to_level_bounds_M1X0(CpuState *cpu);
+RecompReturn clamp_camera_to_level_bounds_M1X1(CpuState *cpu);
+void compute_camera_x_target(CpuState *cpu);  /* $B5:E5AC alias */
+RecompReturn compute_camera_x_target_M0X0(CpuState *cpu);
+RecompReturn compute_camera_x_target_M0X1(CpuState *cpu);
+RecompReturn compute_camera_x_target_M1X0(CpuState *cpu);
+RecompReturn compute_camera_x_target_M1X1(CpuState *cpu);
+void compute_camera_x_target_oscillating(CpuState *cpu);  /* $B5:E5EC alias */
+RecompReturn compute_camera_x_target_oscillating_M0X0(CpuState *cpu);
+RecompReturn compute_camera_x_target_oscillating_M0X1(CpuState *cpu);
+RecompReturn compute_camera_x_target_oscillating_M1X0(CpuState *cpu);
+RecompReturn compute_camera_x_target_oscillating_M1X1(CpuState *cpu);
+void compute_camera_y_target(CpuState *cpu);  /* $B5:E652 alias */
+RecompReturn compute_camera_y_target_M0X0(CpuState *cpu);
+RecompReturn compute_camera_y_target_M0X1(CpuState *cpu);
+RecompReturn compute_camera_y_target_M1X0(CpuState *cpu);
+RecompReturn compute_camera_y_target_M1X1(CpuState *cpu);
+void camera_y_subtract_speed(CpuState *cpu);  /* $B5:E6F7 alias */
+RecompReturn camera_y_subtract_speed_M0X0(CpuState *cpu);
+RecompReturn camera_y_subtract_speed_M0X1(CpuState *cpu);
+RecompReturn camera_y_subtract_speed_M1X0(CpuState *cpu);
+RecompReturn camera_y_subtract_speed_M1X1(CpuState *cpu);
+void negate_camera_scratch_32(CpuState *cpu);  /* $B5:E721 alias */
+RecompReturn negate_camera_scratch_32_M0X0(CpuState *cpu);
+RecompReturn negate_camera_scratch_32_M0X1(CpuState *cpu);
+RecompReturn negate_camera_scratch_32_M1X0(CpuState *cpu);
+RecompReturn negate_camera_scratch_32_M1X1(CpuState *cpu);
+void compute_camera_y_target_oscillating(CpuState *cpu);  /* $B5:E73B alias */
+RecompReturn compute_camera_y_target_oscillating_M0X0(CpuState *cpu);
+RecompReturn compute_camera_y_target_oscillating_M0X1(CpuState *cpu);
+RecompReturn compute_camera_y_target_oscillating_M1X0(CpuState *cpu);
+RecompReturn compute_camera_y_target_oscillating_M1X1(CpuState *cpu);
+void compute_camera_y_target_passthrough(CpuState *cpu);  /* $B5:E7AB alias */
+RecompReturn compute_camera_y_target_passthrough_M0X0(CpuState *cpu);
+RecompReturn compute_camera_y_target_passthrough_M0X1(CpuState *cpu);
+RecompReturn compute_camera_y_target_passthrough_M1X0(CpuState *cpu);
+RecompReturn compute_camera_y_target_passthrough_M1X1(CpuState *cpu);
+void camera_zone_bounds_handler_store_x_edge(CpuState *cpu);  /* $B5:E7C5 alias */
+RecompReturn camera_zone_bounds_handler_store_x_edge_M0X0(CpuState *cpu);
+RecompReturn camera_zone_bounds_handler_store_x_edge_M0X1(CpuState *cpu);
+RecompReturn camera_zone_bounds_handler_store_x_edge_M1X0(CpuState *cpu);
+RecompReturn camera_zone_bounds_handler_store_x_edge_M1X1(CpuState *cpu);
+void check_zone_x_min_link(CpuState *cpu);  /* $B5:E914 alias */
+RecompReturn check_zone_x_min_link_M0X0(CpuState *cpu);
+RecompReturn check_zone_x_min_link_M0X1(CpuState *cpu);
+RecompReturn check_zone_x_min_link_M1X0(CpuState *cpu);
+RecompReturn check_zone_x_min_link_M1X1(CpuState *cpu);
+void check_zone_x_max_link(CpuState *cpu);  /* $B5:E946 alias */
+RecompReturn check_zone_x_max_link_M0X0(CpuState *cpu);
+RecompReturn check_zone_x_max_link_M0X1(CpuState *cpu);
+RecompReturn check_zone_x_max_link_M1X0(CpuState *cpu);
+RecompReturn check_zone_x_max_link_M1X1(CpuState *cpu);
+void check_zone_x_max_link_body(CpuState *cpu);  /* $B5:E94D alias */
+RecompReturn check_zone_x_max_link_body_M0X0(CpuState *cpu);
+RecompReturn check_zone_x_max_link_body_M0X1(CpuState *cpu);
+RecompReturn check_zone_x_max_link_body_M1X0(CpuState *cpu);
+RecompReturn check_zone_x_max_link_body_M1X1(CpuState *cpu);
+void check_zone_y_min_link(CpuState *cpu);  /* $B5:E97E alias */
+RecompReturn check_zone_y_min_link_M0X0(CpuState *cpu);
+RecompReturn check_zone_y_min_link_M0X1(CpuState *cpu);
+RecompReturn check_zone_y_min_link_M1X0(CpuState *cpu);
+RecompReturn check_zone_y_min_link_M1X1(CpuState *cpu);
+void check_zone_y_max_link(CpuState *cpu);  /* $B5:E9B0 alias */
+RecompReturn check_zone_y_max_link_M0X0(CpuState *cpu);
+RecompReturn check_zone_y_max_link_M0X1(CpuState *cpu);
+RecompReturn check_zone_y_max_link_M1X0(CpuState *cpu);
+RecompReturn check_zone_y_max_link_M1X1(CpuState *cpu);
+void finalize_camera_edges(CpuState *cpu);  /* $B5:E9EA alias */
+RecompReturn finalize_camera_edges_M0X0(CpuState *cpu);
+RecompReturn finalize_camera_edges_M0X1(CpuState *cpu);
+RecompReturn finalize_camera_edges_M1X0(CpuState *cpu);
+RecompReturn finalize_camera_edges_M1X1(CpuState *cpu);
+void interpolate_camera_zone_bounds(CpuState *cpu);  /* $B5:EA2E alias */
+RecompReturn interpolate_camera_zone_bounds_M0X0(CpuState *cpu);
+RecompReturn interpolate_camera_zone_bounds_M0X1(CpuState *cpu);
+RecompReturn interpolate_camera_zone_bounds_M1X0(CpuState *cpu);
+RecompReturn interpolate_camera_zone_bounds_M1X1(CpuState *cpu);
+void get_camera_zone_y_interp_weight(CpuState *cpu);  /* $B5:EB8C alias */
+RecompReturn get_camera_zone_y_interp_weight_M0X0(CpuState *cpu);
+RecompReturn get_camera_zone_y_interp_weight_M0X1(CpuState *cpu);
+RecompReturn get_camera_zone_y_interp_weight_M1X0(CpuState *cpu);
+RecompReturn get_camera_zone_y_interp_weight_M1X1(CpuState *cpu);
+void get_camera_zone_x_interp_weight(CpuState *cpu);  /* $B5:EBAD alias */
+RecompReturn get_camera_zone_x_interp_weight_M0X0(CpuState *cpu);
+RecompReturn get_camera_zone_x_interp_weight_M0X1(CpuState *cpu);
+RecompReturn get_camera_zone_x_interp_weight_M1X0(CpuState *cpu);
+RecompReturn get_camera_zone_x_interp_weight_M1X1(CpuState *cpu);
+void find_replacement_camera_zone(CpuState *cpu);  /* $B5:EC55 alias */
+RecompReturn find_replacement_camera_zone_M0X0(CpuState *cpu);
+RecompReturn find_replacement_camera_zone_M0X1(CpuState *cpu);
+RecompReturn find_replacement_camera_zone_M1X0(CpuState *cpu);
+RecompReturn find_replacement_camera_zone_M1X1(CpuState *cpu);
+void zone_contains_camera_x(CpuState *cpu);  /* $B5:ECD0 alias */
+RecompReturn zone_contains_camera_x_M0X0(CpuState *cpu);
+RecompReturn zone_contains_camera_x_M0X1(CpuState *cpu);
+RecompReturn zone_contains_camera_x_M1X0(CpuState *cpu);
+RecompReturn zone_contains_camera_x_M1X1(CpuState *cpu);
+void zone_contains_camera_y(CpuState *cpu);  /* $B5:ECEF alias */
+RecompReturn zone_contains_camera_y_M0X0(CpuState *cpu);
+RecompReturn zone_contains_camera_y_M0X1(CpuState *cpu);
+RecompReturn zone_contains_camera_y_M1X0(CpuState *cpu);
+RecompReturn zone_contains_camera_y_M1X1(CpuState *cpu);
+void zone_contains_camera_y_body(CpuState *cpu);  /* $B5:ECF6 alias */
+RecompReturn zone_contains_camera_y_body_M0X0(CpuState *cpu);
+RecompReturn zone_contains_camera_y_body_M0X1(CpuState *cpu);
+RecompReturn zone_contains_camera_y_body_M1X0(CpuState *cpu);
+RecompReturn zone_contains_camera_y_body_M1X1(CpuState *cpu);
+void check_zone_reciprocal_link(CpuState *cpu);  /* $B5:ED10 alias */
+RecompReturn check_zone_reciprocal_link_M0X0(CpuState *cpu);
+RecompReturn check_zone_reciprocal_link_M0X1(CpuState *cpu);
+RecompReturn check_zone_reciprocal_link_M1X0(CpuState *cpu);
+RecompReturn check_zone_reciprocal_link_M1X1(CpuState *cpu);
+void find_camera_zone_from_scratch(CpuState *cpu);  /* $B5:ED2C alias */
+RecompReturn find_camera_zone_from_scratch_M0X0(CpuState *cpu);
+RecompReturn find_camera_zone_from_scratch_M0X1(CpuState *cpu);
+RecompReturn find_camera_zone_from_scratch_M1X0(CpuState *cpu);
+RecompReturn find_camera_zone_from_scratch_M1X1(CpuState *cpu);
+void finalize_camera_scroll(CpuState *cpu);  /* $B5:ED62 alias */
+RecompReturn finalize_camera_scroll_M0X0(CpuState *cpu);
+RecompReturn finalize_camera_scroll_M0X1(CpuState *cpu);
+RecompReturn finalize_camera_scroll_M1X0(CpuState *cpu);
+RecompReturn finalize_camera_scroll_M1X1(CpuState *cpu);
+void decay_camera_screen_shake(CpuState *cpu);  /* $B5:EE6B alias */
+RecompReturn decay_camera_screen_shake_M0X0(CpuState *cpu);
+RecompReturn decay_camera_screen_shake_M0X1(CpuState *cpu);
+RecompReturn decay_camera_screen_shake_M1X0(CpuState *cpu);
+RecompReturn decay_camera_screen_shake_M1X1(CpuState *cpu);
+void interpolate_camera_scroll_x(CpuState *cpu);  /* $B5:EEB1 alias */
+RecompReturn interpolate_camera_scroll_x_M0X0(CpuState *cpu);
+RecompReturn interpolate_camera_scroll_x_M0X1(CpuState *cpu);
+RecompReturn interpolate_camera_scroll_x_M1X0(CpuState *cpu);
+RecompReturn interpolate_camera_scroll_x_M1X1(CpuState *cpu);
+void interpolate_camera_scroll_y(CpuState *cpu);  /* $B5:EF89 alias */
+RecompReturn interpolate_camera_scroll_y_M0X0(CpuState *cpu);
+RecompReturn interpolate_camera_scroll_y_M0X1(CpuState *cpu);
+RecompReturn interpolate_camera_scroll_y_M1X0(CpuState *cpu);
+RecompReturn interpolate_camera_scroll_y_M1X1(CpuState *cpu);
 void CODE_B5F0CD(CpuState *cpu);  /* $B5:F0A9 alias */
 RecompReturn CODE_B5F0CD_M0X0(CpuState *cpu);
 RecompReturn CODE_B5F0CD_M0X1(CpuState *cpu);
@@ -14092,76 +14092,76 @@ RecompReturn set_default_kong_palette_M0X0(CpuState *cpu);
 RecompReturn set_default_kong_palette_M0X1(CpuState *cpu);
 RecompReturn set_default_kong_palette_M1X0(CpuState *cpu);
 RecompReturn set_default_kong_palette_M1X1(CpuState *cpu);
-void CODE_BBAF0C(CpuState *cpu);  /* $BB:AEFF alias */
-RecompReturn CODE_BBAF0C_M0X0(CpuState *cpu);
-RecompReturn CODE_BBAF0C_M0X1(CpuState *cpu);
-RecompReturn CODE_BBAF0C_M1X0(CpuState *cpu);
-RecompReturn CODE_BBAF0C_M1X1(CpuState *cpu);
+void load_level_config(CpuState *cpu);  /* $BB:AEFF alias */
+RecompReturn load_level_config_M0X0(CpuState *cpu);
+RecompReturn load_level_config_M0X1(CpuState *cpu);
+RecompReturn load_level_config_M1X0(CpuState *cpu);
+RecompReturn load_level_config_M1X1(CpuState *cpu);
 void CODE_BBAF0F(CpuState *cpu);  /* $BB:AF02 alias */
 RecompReturn CODE_BBAF0F_M0X0(CpuState *cpu);
 RecompReturn CODE_BBAF0F_M0X1(CpuState *cpu);
 RecompReturn CODE_BBAF0F_M1X0(CpuState *cpu);
 RecompReturn CODE_BBAF0F_M1X1(CpuState *cpu);
-void CODE_BBAFEE(CpuState *cpu);  /* $BB:AFE1 alias */
-RecompReturn CODE_BBAFEE_M0X0(CpuState *cpu);
-RecompReturn CODE_BBAFEE_M0X1(CpuState *cpu);
-RecompReturn CODE_BBAFEE_M1X0(CpuState *cpu);
-RecompReturn CODE_BBAFEE_M1X1(CpuState *cpu);
-void CODE_BBB002(CpuState *cpu);  /* $BB:AFF5 alias */
-RecompReturn CODE_BBB002_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB002_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB002_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB002_M1X1(CpuState *cpu);
-void CODE_BBB015(CpuState *cpu);  /* $BB:B008 alias */
-RecompReturn CODE_BBB015_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB015_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB015_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB015_M1X1(CpuState *cpu);
-void CODE_BBB034(CpuState *cpu);  /* $BB:B027 alias */
-RecompReturn CODE_BBB034_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB034_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB034_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB034_M1X1(CpuState *cpu);
-void CODE_BBB043(CpuState *cpu);  /* $BB:B036 alias */
-RecompReturn CODE_BBB043_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB043_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB043_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB043_M1X1(CpuState *cpu);
-void CODE_BBB052(CpuState *cpu);  /* $BB:B045 alias */
-RecompReturn CODE_BBB052_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB052_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB052_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB052_M1X1(CpuState *cpu);
-void CODE_BBB05C(CpuState *cpu);  /* $BB:B04F alias */
-RecompReturn CODE_BBB05C_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB05C_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB05C_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB05C_M1X1(CpuState *cpu);
-void CODE_BBB066(CpuState *cpu);  /* $BB:B059 alias */
-RecompReturn CODE_BBB066_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB066_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB066_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB066_M1X1(CpuState *cpu);
-void CODE_BBB077(CpuState *cpu);  /* $BB:B06A alias */
-RecompReturn CODE_BBB077_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB077_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB077_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB077_M1X1(CpuState *cpu);
+void CODE_BBAF0F_skip_unlock_requirement(CpuState *cpu);  /* $BB:AFE1 alias */
+RecompReturn CODE_BBAF0F_skip_unlock_requirement_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_skip_unlock_requirement_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_skip_unlock_requirement_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_skip_unlock_requirement_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_ppu_and_vram_payload(CpuState *cpu);  /* $BB:AFF5 alias */
+RecompReturn CODE_BBAF0F_read_ppu_and_vram_payload_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_ppu_and_vram_payload_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_ppu_and_vram_payload_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_ppu_and_vram_payload_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_graphics_dma_song_palette(CpuState *cpu);  /* $BB:B008 alias */
+RecompReturn CODE_BBAF0F_read_graphics_dma_song_palette_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_graphics_dma_song_palette_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_graphics_dma_song_palette_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_graphics_dma_song_palette_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_slope_and_init_routines(CpuState *cpu);  /* $BB:B027 alias */
+RecompReturn CODE_BBAF0F_read_slope_and_init_routines_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_slope_and_init_routines_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_slope_and_init_routines_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_slope_and_init_routines_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_nmi_and_game_sub_mode(CpuState *cpu);  /* $BB:B036 alias */
+RecompReturn CODE_BBAF0F_read_nmi_and_game_sub_mode_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_nmi_and_game_sub_mode_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_nmi_and_game_sub_mode_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_nmi_and_game_sub_mode_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_tileset_type(CpuState *cpu);  /* $BB:B045 alias */
+RecompReturn CODE_BBAF0F_read_tileset_type_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_tileset_type_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_tileset_type_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_tileset_type_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_animal(CpuState *cpu);  /* $BB:B04F alias */
+RecompReturn CODE_BBAF0F_read_animal_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_animal_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_animal_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_animal_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_unknown_38_and_camera_control(CpuState *cpu);  /* $BB:B059 alias */
+RecompReturn CODE_BBAF0F_read_unknown_38_and_camera_control_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_unknown_38_and_camera_control_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_unknown_38_and_camera_control_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_unknown_38_and_camera_control_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_effects(CpuState *cpu);  /* $BB:B06A alias */
+RecompReturn CODE_BBAF0F_read_effects_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_effects_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_effects_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_effects_M1X1(CpuState *cpu);
 void CODE_BBB07F(CpuState *cpu);  /* $BB:B072 alias */
 RecompReturn CODE_BBB07F_M0X0(CpuState *cpu);
 RecompReturn CODE_BBB07F_M0X1(CpuState *cpu);
 RecompReturn CODE_BBB07F_M1X0(CpuState *cpu);
 RecompReturn CODE_BBB07F_M1X1(CpuState *cpu);
-void CODE_BBB08F(CpuState *cpu);  /* $BB:B082 alias */
-RecompReturn CODE_BBB08F_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB08F_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB08F_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB08F_M1X1(CpuState *cpu);
-void CODE_BBB095(CpuState *cpu);  /* $BB:B088 alias */
-RecompReturn CODE_BBB095_M0X0(CpuState *cpu);
-RecompReturn CODE_BBB095_M0X1(CpuState *cpu);
-RecompReturn CODE_BBB095_M1X0(CpuState *cpu);
-RecompReturn CODE_BBB095_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_extra_unlocks_ptr(CpuState *cpu);  /* $BB:B082 alias */
+RecompReturn CODE_BBAF0F_read_extra_unlocks_ptr_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_extra_unlocks_ptr_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_extra_unlocks_ptr_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_extra_unlocks_ptr_M1X1(CpuState *cpu);
+void CODE_BBAF0F_read_destinations(CpuState *cpu);  /* $BB:B088 alias */
+RecompReturn CODE_BBAF0F_read_destinations_M0X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_destinations_M0X1(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_destinations_M1X0(CpuState *cpu);
+RecompReturn CODE_BBAF0F_read_destinations_M1X1(CpuState *cpu);
 void CODE_BBB0B9(CpuState *cpu);  /* $BB:B0AC alias */
 RecompReturn CODE_BBB0B9_M0X0(CpuState *cpu);
 RecompReturn CODE_BBB0B9_M0X1(CpuState *cpu);
@@ -14707,11 +14707,11 @@ RecompReturn CODE_BCFB8B_M0X0(CpuState *cpu);
 RecompReturn CODE_BCFB8B_M0X1(CpuState *cpu);
 RecompReturn CODE_BCFB8B_M1X0(CpuState *cpu);
 RecompReturn CODE_BCFB8B_M1X1(CpuState *cpu);
-void CODE_BCFBCC(CpuState *cpu);  /* $BC:FBCC alias */
-RecompReturn CODE_BCFBCC_M0X0(CpuState *cpu);
-RecompReturn CODE_BCFBCC_M0X1(CpuState *cpu);
-RecompReturn CODE_BCFBCC_M1X0(CpuState *cpu);
-RecompReturn CODE_BCFBCC_M1X1(CpuState *cpu);
+void mirror_sprite_clipping(CpuState *cpu);  /* $BC:FBCC alias */
+RecompReturn mirror_sprite_clipping_M0X0(CpuState *cpu);
+RecompReturn mirror_sprite_clipping_M0X1(CpuState *cpu);
+RecompReturn mirror_sprite_clipping_M1X0(CpuState *cpu);
+RecompReturn mirror_sprite_clipping_M1X1(CpuState *cpu);
 void populate_special_sprite_clipping(CpuState *cpu);  /* $BC:FBDD alias */
 RecompReturn populate_special_sprite_clipping_M0X0(CpuState *cpu);
 RecompReturn populate_special_sprite_clipping_M0X1(CpuState *cpu);
