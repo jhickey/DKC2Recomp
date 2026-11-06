@@ -407,7 +407,7 @@ class ApplyCoopOverridesTests(unittest.TestCase):
                 self.assertEqual(path.read_text(encoding="utf-8"), broken)
 
     def test_requires_action_anchors_without_writing(self):
-        for missing in ("CODE_B8B644", "kong_state_45", "CODE_B8B4CF", "CODE_B8B4F7", "handle_player_pit_death", "jump_off_hook_action", "CODE_B398D7", "hook_main", "CODE_B3F069", "CODE_B8A592", "CODE_B5E560", "handle_animal_mounting", "level_goal_main_idle_state", "check_for_collision", "player_interaction_17", "kong_state_27",
+        for missing in ("CODE_B8B644", "kong_state_45", "CODE_B8B4CF", "CODE_B8B4F7", "handle_player_pit_death", "jump_off_hook_action", "CODE_B398D7", "hook_main", "CODE_B3F069", "CODE_B8A592", "clamp_camera_to_level_bounds", "handle_animal_mounting", "level_goal_main_idle_state", "check_for_collision", "player_interaction_17", "kong_state_27",
                         "start_player_jumping", "prevent_sprite_from_leaving_level_x", "bank_B5_F776", "bank_B6_819C", "player_interaction_0B",
                         "team_up_action"):
             with self.subTest(missing=missing), tempfile.TemporaryDirectory() as tmp:
