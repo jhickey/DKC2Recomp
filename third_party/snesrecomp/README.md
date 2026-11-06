@@ -3,7 +3,11 @@
 ## Repositories
 
 - Authoritative upstream: <https://github.com/mstan/snesrecomp>
-- DKC2 integration fork: <https://github.com/Nicktendonick/snesrecomp>
+- Earlier DKC2 integration forks: <https://github.com/Nicktendonick/snesrecomp>,
+  then <https://github.com/elliotttate/snesrecomp> (the submodule URL through
+  v0.0.8 and PR #1)
+- Current submodule URL: <https://github.com/jhickey/snesrecomp>, a fork of
+  `elliotttate/snesrecomp` carrying the 2026-11-05 analyzer fix below
 - Submodule path: `snesrecomp/`
 
 The fork exists so DKC2-specific framework changes can be fetched by ordinary
@@ -47,13 +51,13 @@ trace-enabled APU lock declarations, and propagate a clean interpreted guest
 non-local return through the compiled call bridge. The latter is covered by a
 synthetic M=0 `PLA; RTL` bridge case and is required by Swanky's Bonus Bonanza.
 
-## 2026-11-05 never-returning call fix (local, unpushed)
+## 2026-11-05 never-returning call fix
 
 - Base: `3a929cd30336f2b3a077df17912719be63142299`, the previous submodule pin
   (on `elliotttate/snesrecomp` branch `dkc2-widescreen-presentation-v0.0.4`).
-- Local branch `fix-never-returning-call-aot`, commit
-  `32a0846`. It exists only in this checkout until it is pushed to the
-  submodule remote; a fresh clone cannot fetch it until then.
+- Branch `fix-never-returning-call-aot` on `jhickey/snesrecomp`, commit
+  `32a0846fc98442d5b899b3f3324b19a37ac0298e`. It is not yet in
+  `elliotttate/snesrecomp` or `mstan/snesrecomp`.
 - The Rust analyzer no longer treats a JSR/JSL into a callee with a proven
   empty exit set as a truncated continuation. Unknown-exit calls remain
   truncated. The emitter keeps such code exact: if the callee ever resumes
