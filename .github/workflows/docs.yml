@@ -11,9 +11,10 @@ on:
   push:
     branches: [main]
     paths:
-      - "docs/guide/**"
+      - "**/*.md"
       - "mkdocs.yml"
       - "docs/requirements.txt"
+      - "scripts/check_markdown_links.py"
       - ".github/workflows/docs.yml"
   pull_request:
     paths:
@@ -35,8 +36,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Check Markdown links
@@ -45,7 +46,7 @@ jobs:
         run: python -m pip install -r docs/requirements.txt
       - name: Build site (strict)
         run: zensical build --strict
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request' && github.repository == 'jhickey/DKC2Recomp'
         with:
           path: site
@@ -62,4 +63,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
