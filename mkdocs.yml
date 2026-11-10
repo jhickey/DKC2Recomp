@@ -5,7 +5,8 @@
 # Only docs/guide/ is published; developer docs stay in the repository.
 site_name: DKC2Recomp
 site_description: User guide for the DKC2Recomp native port of Donkey Kong Country 2.
-repo_url: https://github.com/elliotttate/DKC2Recomp
+site_url: https://jhickey.github.io/DKC2Recomp/
+repo_url: https://github.com/jhickey/DKC2Recomp
 edit_uri: edit/main/docs/guide/
 docs_dir: docs/guide
 site_dir: site

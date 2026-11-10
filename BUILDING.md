@@ -23,7 +23,7 @@ optional.
 Clone with submodules:
 
 ```sh
-git clone --recurse-submodules https://github.com/elliotttate/DKC2Recomp
+git clone --recurse-submodules https://github.com/jhickey/DKC2Recomp
 cd DKC2Recomp
 ```
 

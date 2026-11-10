@@ -69,7 +69,7 @@ to identify the supported game; its source and copyright notice are in
 
 | | |
 | --- | --- |
-| [User guide](docs/guide/index.md) | Installing, controls, settings, video, co-op, characters, music and troubleshooting. |
+| [User guide](docs/guide/index.md) | Installing, controls, settings, video, co-op, characters, music and troubleshooting. Also published at <https://jhickey.github.io/DKC2Recomp/>. |
 | [BUILDING.md](BUILDING.md) | Building from source, running tests and packaging. |
 | [Developer docs](docs/README.md) | Architecture, hardware notes, implementation journal, roadmap and feature internals. |
 | [CHANGELOG.md](CHANGELOG.md) | Changes by release; release notes are in [docs/releases](docs/releases/). |

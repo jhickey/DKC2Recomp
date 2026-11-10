@@ -8609,3 +8609,9 @@ documentation checks. The ROM-configured macOS build passes 72/76; the four
 failures are the co-op checks already open before this change (DKC2R-1).
 `zensical build --strict` reports no issues. The `make_release` packaging
 test runs only on Windows and has not been run on the updated script.
+
+The site is hosted from the `jhickey/DKC2Recomp` fork (created 2026-11-09)
+at <https://jhickey.github.io/DKC2Recomp/>. The `docs` workflow deploys on
+pushes to that fork's `main` and on manual runs, and only builds in any
+other repository. `BUILDING.md` now clones from the fork, matching the
+`snesrecomp` submodule, which already comes from `jhickey/snesrecomp`.

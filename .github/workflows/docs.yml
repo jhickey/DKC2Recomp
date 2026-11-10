@@ -1,13 +1,20 @@
 # User guide site (docs/guide/, configured by mkdocs.yml).
 #
 # Pull requests that touch the documentation get a strict build and a
-# repository-wide Markdown link check. Deployment to GitHub Pages is manual
-# (workflow_dispatch) until the hosting repository is confirmed; to publish
-# on every push to main instead, add a `push: branches: [main]` trigger and
-# enable Pages with "GitHub Actions" as the source in the repository settings.
+# repository-wide Markdown link check. Pushes to main (and manual runs)
+# also deploy the site to GitHub Pages at https://jhickey.github.io/DKC2Recomp/.
+# Pages must use "GitHub Actions" as its source in the repository settings.
+# Deployment only runs in the jhickey fork, so other clones just build.
 name: docs
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/guide/**"
+      - "mkdocs.yml"
+      - "docs/requirements.txt"
+      - ".github/workflows/docs.yml"
   pull_request:
     paths:
       - "**/*.md"
@@ -39,12 +46,12 @@ jobs:
       - name: Build site (strict)
         run: zensical build --strict
       - uses: actions/upload-pages-artifact@v3
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name != 'pull_request' && github.repository == 'jhickey/DKC2Recomp'
         with:
           path: site
 
   deploy:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name != 'pull_request' && github.repository == 'jhickey/DKC2Recomp'
     needs: build
     runs-on: ubuntu-latest
     permissions:

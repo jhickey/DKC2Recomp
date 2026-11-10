@@ -816,6 +816,6 @@ three grab orders, plus eventual native idle after stopping.
   internals to `docs/dev/`.
 - [x] Check relative links, anchors and UTF-8 for all repository Markdown in
   CTest (`markdown_links_current`) and the `docs` workflow.
-- [ ] Choose the repository that hosts the GitHub Pages site and enable
-  deployment (the `docs` workflow currently deploys only on manual dispatch).
+- [x] Host the site from the `jhickey/DKC2Recomp` fork on GitHub Pages; the
+  `docs` workflow deploys on pushes to that fork's `main`.
 - [ ] Run the updated `make_release` packaging test on Windows.
