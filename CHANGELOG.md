@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Reorganized the documentation. The README is now a short overview.
+  Player-facing material moved to a user guide in `docs/guide/` that can be
+  published as a site (Zensical, `mkdocs.yml`). Build, test and packaging steps
+  moved to `BUILDING.md`. Widescreen, co-op, recompilation-status, MSU-1 and
+  character-pack internals moved to `docs/dev/`, and `docs/README.md` indexes
+  the developer docs. Release notes moved to `docs/releases/`, and the stale
+  `ISSUES.md` was archived under `docs/history/`. Windows release archives
+  now include the user guide in place of `docs/PROJECT_KONGS.md` and
+  `docs/MSU1_AUDIO.md`.
+- Added a Markdown link, anchor and UTF-8 check (`scripts/check_markdown_links.py`)
+  to CTest and a `docs` GitHub Actions workflow. Fixed the non-UTF-8 byte in a
+  changelog heading and the garbled dashes in the README and journal.
 - Named 46 previously generic camera, level-loading and terrain-streaming
   routines in the symbol database and recompiler configuration, using
   research from the dkc2-c project. Generated code is unchanged apart from
@@ -1174,7 +1186,7 @@ widescreen path as experimental.
 - Complete a normal level using its native progress bit and exit fade; reject menus, bonus/boss rooms and duplicate exits.
 - Add enabled/disabled synthetic tests and copied-save progress/map-exit acceptance.
 
-### 2026-10-25 — F8 boss and bonus completion
+### 2026-10-25 â€” F8 boss and bonus completion
 - Extend beat_level to boss fights and bonuses; credit each room reward once.
 - Bosses clear their map node and exit to the map; bonuses return to the parent level without clearing it, preserving animal form.
 - Reject stale gameplay fields on the map using the main-loop continuation.

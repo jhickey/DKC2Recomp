@@ -1,4 +1,7 @@
-# MSU-1 replacement music
+# MSU-1 replacement music: implementation
+
+Player-facing setup lives in the [MSU-1 guide](../guide/msu1-music.md). This
+page records the scheduler policy, track mapping, overrides and verification.
 
 In Escape > Settings > Audio, choose the extracted folder containing
 `dkc2_msu1-N.pcm`, enable Replacement music (MSU-1), and set Music volume

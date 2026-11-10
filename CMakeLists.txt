@@ -1044,6 +1044,17 @@ if(BUILD_TESTING)
                 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_promote_snesrecomp_symbols.py)
         set_tests_properties(dkc2_symbol_promotion_tool PROPERTIES
             LABELS "unit;tooling;symbols;portable")
+        add_test(NAME markdown_links_tool
+            COMMAND ${Python3_EXECUTABLE}
+                ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_check_markdown_links.py)
+        set_tests_properties(markdown_links_tool PROPERTIES
+            LABELS "unit;tooling;docs;portable")
+        add_test(NAME markdown_links_current
+            COMMAND ${Python3_EXECUTABLE}
+                ${CMAKE_CURRENT_SOURCE_DIR}/scripts/check_markdown_links.py
+                --root ${CMAKE_CURRENT_SOURCE_DIR})
+        set_tests_properties(markdown_links_current PROPERTIES
+            LABELS "unit;docs;portable")
         add_test(NAME dkc2_symbol_database_tool
             COMMAND ${Python3_EXECUTABLE}
                 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_build_dkc2_symbol_database.py)

@@ -169,6 +169,6 @@ setups; the latest outcomes correspond to the corrected final source.
 - A fresh input-only first-boarding approach for the special kart, concurrent
   captures by multiple cats and final ending cinematics remain unverified.
 
-See [release notes](../../RELEASE-NOTES-unreleased.md) and the
+See [release notes](../releases/unreleased.md) and the
 [implementation journal](../IMPLEMENTATION_JOURNAL.md) for feature scope
 and earlier verification history.

@@ -3066,7 +3066,7 @@ not mutate `$0AFC`; it must be rebuilt and visually replayed before retention.
 The final build request was blocked by the Codex execution-usage limit, so no
 new executable or Version 12 deployment was produced from this investigation.
 
-## 2026-08-09 â€” validated decompilation-symbol promotion
+## 2026-08-09 — validated decompilation-symbol promotion
 
 The active `recomp/bank*.cfg` set was audited against the private imported WLA
 overlay. It already contained the large revision-0 H4-derived symbol set:
@@ -8563,3 +8563,49 @@ PR #1's edited lifecycle route fails on both runtimes, and `rescue` is new.
 The PR's recorded validation did not run any of these four checks. Whether
 they reflect co-op regressions or routes invalidated by the intended camera
 change is unresolved.
+
+## 2026-11-09 - Documentation reorganization
+
+The README had grown to 1,131 lines. It mixed a player guide, build
+instructions and a running developer log; co-op entries kept being added
+below the License section. It is now a 126-line overview that links to
+three places:
+
+- `docs/guide/`: a user guide for players (installing, controls, settings,
+  video, co-op, characters, MSU-1, save tools, troubleshooting and an
+  environment-variable reference). It is the source for a static site
+  built with Zensical from `mkdocs.yml`, pinned in `docs/requirements.txt`
+  to 0.0.72, the newest release at least two weeks old. Only the guide is
+  published. Guide pages do not link outside `docs/guide/`, so they work
+  on the site, on GitHub and inside the release archive.
+- `BUILDING.md`: prerequisites, platform builds, tests, compiled
+  configuration, symbol workflow, packaging and the site preview. The
+  Windows toolchain notes from the old `ISSUES.md` moved here.
+- `docs/dev/`: the README's developer sections, moved by exact line range so
+  nothing was rewritten: widescreen stage status, co-op behavior and
+  verification, recompilation coverage, and presentation/pacing notes. A
+  line-by-line comparison against the old README confirmed that the
+  developer content arrived verbatim, apart from rewritten links. The player and verification
+  halves of `PROJECT_KONGS.md` and `MSU1_AUDIO.md` were split between the
+  guide and `docs/dev/` (`git mv` keeps their history). `docs/README.md`
+  indexes every developer document.
+
+Existing developer docs keep their paths. Release notes moved to
+`docs/releases/`, and `make_release.ps1` still stages them as
+`RELEASE-NOTES-vX.Y.Z.md` in the archive. `ISSUES.md` (last updated
+2026-07-19; every item resolved or superseded) is archived as
+`docs/history/ISSUES-2026-07.md`. The README's stale `Nicktendonick`
+submodule note now matches `.gitmodules`.
+
+New `scripts/check_markdown_links.py` checks that every relative link
+target exists and that every heading anchor matches GitHub's anchor rules,
+and it fails on invalid UTF-8. Its first run found the CP-1252 em dash in a
+CHANGELOG heading (DKC2R-7) and two links broken by earlier moves; all are
+fixed. Synthetic tests cover slugs, missing files and anchors, code-block
+exclusion, UTF-8 and excluded folders.
+
+Validation on macOS: 53/53 public CTest checks pass, including the two new
+documentation checks. The ROM-configured macOS build passes 72/76; the four
+failures are the co-op checks already open before this change (DKC2R-1).
+`zensical build --strict` reports no issues. The `make_release` packaging
+test runs only on Windows and has not been run on the updated script.

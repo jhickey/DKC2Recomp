@@ -56,3 +56,4 @@ tier2_coverage.json
 # alongside the legacy fixed name.
 tier2_*.json
 tier2_*.jsonl
+/site/

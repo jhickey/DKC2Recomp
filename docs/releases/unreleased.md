@@ -236,7 +236,7 @@ restarting the game alone does not apply changes. Invalid values fail compilatio
 
 Fresh pre-commit validation was performed on 2026-10-29 against hash-verified
 external checkpoint copies. Commands, checkpoint hashes, results and remaining
-limitations are recorded in [the evidence manifest](docs/evidence/coop-validation-2026-10-29.md).
+limitations are recorded in [the evidence manifest](../evidence/coop-validation-2026-10-29.md).
 
 - Release unit, headless, native Windows desktop and SDL builds passed.
 - The complete available CTest run reported **56/58 passing** before and after
@@ -245,7 +245,7 @@ limitations are recorded in [the evidence manifest](docs/evidence/coop-validatio
   their spawned PowerShell environment cannot resolve `Get-FileHash`.
   These were subsequently fixed by explicit host-module imports; synthetic
   packaging and the complete public suite now pass **58/58**. See
-  [follow-up evidence](docs/evidence/packaging-validation-2026-10-29.md).
+  [follow-up evidence](../evidence/packaging-validation-2026-10-29.md).
 - **44/45 targeted private checks passed**, including cat-grab ownership,
   successive hooks, coaster behavior, shared barrels, honey terrain, animal
   transitions and developer level completion.
@@ -254,7 +254,7 @@ limitations are recorded in [the evidence manifest](docs/evidence/coop-validatio
   on 2026-10-22; it is not counted as a pass. Copied-save water/item ownership
   and synthetic ownership checks pass. The setup was subsequently repaired:
   both players now pass all item-input assertions, with native chest identity
-  checked too. See [follow-up evidence](docs/evidence/item-input-validation-2026-10-29.md).
+  checked too. See [follow-up evidence](../evidence/item-input-validation-2026-10-29.md).
 - Corrected outdated test approaches for staggered pole entry and water entry,
   and replaced an obsolete Rattly-deletion assertion with native unmounted-idle
   validation. Initial failed attempts and rechecks remain in the evidence.
@@ -273,11 +273,11 @@ limitations are recorded in [the evidence manifest](docs/evidence/coop-validatio
 
 ## Supporting documentation
 
-- [Changelog](CHANGELOG.md)
-- [Implementation journal](docs/IMPLEMENTATION_JOURNAL.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Hardware notes](docs/HARDWARE_NOTES.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Co-op tuning](config/coop_tuning.cfg)
-- [Developer configuration](config/developer.cfg)
-- [Controller mapping provenance](third_party/sdl_gamecontrollerdb/PROVENANCE.md)
+- [Changelog](../../CHANGELOG.md)
+- [Implementation journal](../IMPLEMENTATION_JOURNAL.md)
+- [Architecture](../ARCHITECTURE.md)
+- [Hardware notes](../HARDWARE_NOTES.md)
+- [Roadmap](../ROADMAP.md)
+- [Co-op tuning](../../config/coop_tuning.cfg)
+- [Developer configuration](../../config/developer.cfg)
+- [Controller mapping provenance](../../third_party/sdl_gamecontrollerdb/PROVENANCE.md)

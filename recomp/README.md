@@ -16,7 +16,7 @@ separate provenance and legal review.
 The shared LLE interpreter remains the correctness oracle for unproven paths.
 Add or change a boundary or dispatch contract only when disassembly structure
 and differential runtime evidence support it, and record material decisions in
-`docs/IMPLEMENTATION_JOURNAL.md` or `ISSUES.md`.
+`docs/IMPLEMENTATION_JOURNAL.md`.
 
 `funcs.h` is a mechanically generated declaration index for these CFG entries.
 `scripts/generate_snesrecomp.ps1` refreshes it before each private-ROM emit so a

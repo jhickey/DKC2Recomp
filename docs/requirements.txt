@@ -1,0 +1,4 @@
+# Documentation site toolchain (user guide only; see mkdocs.yml).
+# Pinned for reproducible builds. Install with:
+#   python3 -m pip install -r docs/requirements.txt
+zensical==0.0.72

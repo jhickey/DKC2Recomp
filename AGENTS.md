@@ -25,7 +25,11 @@ evidence and make every milestone reproducible.
    paths for private integration checks.
 3. Run the complete available test suite before and after a milestone.
 4. Update the implementation journal, architecture, hardware notes, roadmap,
-   changelog, and README when behavior or limitations change.
+   changelog, and README when behavior or limitations change. Player-visible
+   behavior belongs in the user guide (`docs/guide/`), build and test steps in
+   `BUILDING.md`, and feature internals in `docs/dev/`. Keep the README a short
+   overview that links to those; do not append feature logs to it.
+   `docs/README.md` indexes the developer documentation.
 5. Report unverified work explicitly. Never replace missing hardware with a
    guessed success response merely to advance the boot probe.
 

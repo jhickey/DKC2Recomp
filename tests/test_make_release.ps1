@@ -16,7 +16,8 @@ try {
         'build/assets/img/verdict_warn.tga', 'build/assets/img/verdict_bad.tga',
         'build/assets/img/verdict_none.tga', 'build/assets/img/pad.tga', 'build/assets/img/boxart.tga',
         'README.md', 'CHANGELOG.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md',
-        'docs/PROJECT_KONGS.md', 'docs/MSU1_AUDIO.md', 'scripts/import_project_kongs.py',
+        'docs/guide/index.md', 'docs/guide/characters.md', 'docs/guide/msu1-music.md',
+        'docs/releases/v1.2.3.md', 'scripts/import_project_kongs.py',
         'third_party/dkc3_menu/LICENSE', 'third_party/dkc_msu1/LICENSE-DKC1.txt',
         'third_party/dkc_msu1/LICENSE-DKC3.txt', 'third_party/project_kongs/LICENSE-MIT.txt',
         'third_party/licenses/Lato-OFL.txt', 'recomp-ui/src/third_party/imgui/LICENSE.txt',
@@ -38,7 +39,8 @@ try {
         try {
             $Names = @($Zip.Entries | ForEach-Object { $_.FullName.Replace('\', '/') })
             foreach ($Name in @('DKC2Recomp.exe', 'DKC2RecompSDL.exe', 'SDL2.dll',
-                'docs/MSU1_AUDIO.md', 'scripts/import_project_kongs.py',
+                'docs/guide/index.md', 'docs/guide/characters.md', 'docs/guide/msu1-music.md',
+                'RELEASE-NOTES-v1.2.3.md', 'scripts/import_project_kongs.py',
                 'third_party/dkc_msu1/LICENSE-DKC1.txt')) {
                 if ($Name -notin $Names) { throw "Missing packaged file: $Name" }
             }

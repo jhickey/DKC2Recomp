@@ -45,5 +45,5 @@ The newer DKC2 CRT implementation adds a separate CRT television mode with
 Living room, Studio monitor, Soft and Custom, six sliders and four masks.
 WGL and SDL share the passes; GPU tests cover 40 flat settings plus 13 CRT
 variations. Both desktop hosts also expose MSU-1 folder, gain and fallback;
-see [MSU-1 audio](MSU1_AUDIO.md). Characters provides Donkey/Kiddy selection
+see [MSU-1 audio](dev/msu1.md). Characters provides Donkey/Kiddy selection
 and external packs beyond the original DKC3 comparison.

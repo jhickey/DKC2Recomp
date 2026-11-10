@@ -98,12 +98,17 @@ Copy-Item -LiteralPath (Join-Path $Repository "README.md") -Destination $Stage
 Copy-Item -LiteralPath (Join-Path $Repository "CHANGELOG.md") -Destination $Stage
 Copy-Item -LiteralPath (Join-Path $Repository "LICENSE") -Destination $Stage
 Copy-Item -LiteralPath (Join-Path $Repository "THIRD_PARTY_NOTICES.md") -Destination $Stage
-$ReleaseNotes = Join-Path $Repository "RELEASE-NOTES-v$Version.md"
+$ReleaseNotes = Join-Path $Repository "docs\releases\v$Version.md"
 if (Test-Path -LiteralPath $ReleaseNotes -PathType Leaf) {
-    Copy-Item -LiteralPath $ReleaseNotes -Destination $Stage
+    Copy-Item -LiteralPath $ReleaseNotes -Destination (Join-Path $Stage "RELEASE-NOTES-v$Version.md")
 }
-foreach ($Relative in @("docs\PROJECT_KONGS.md", "docs\MSU1_AUDIO.md",
-                        "scripts\import_project_kongs.py")) {
+$GuideDirectory = Join-Path $Repository "docs\guide"
+$GuidePages = @(Get-ChildItem -LiteralPath $GuideDirectory -Filter "*.md" -File |
+    ForEach-Object { "docs\guide\$($_.Name)" })
+foreach ($Required in @("docs\guide\index.md", "docs\guide\characters.md", "docs\guide\msu1-music.md")) {
+    if ($Required -notin $GuidePages) { throw "Required user guide page missing: $Required" }
+}
+foreach ($Relative in @($GuidePages + "scripts\import_project_kongs.py")) {
     $Target = Join-Path $Stage $Relative
     New-Item -ItemType Directory -Path (Split-Path -Parent $Target) -Force | Out-Null
     Copy-Item -LiteralPath (Join-Path $Repository $Relative) -Destination $Target

@@ -809,3 +809,13 @@ three grab orders, plus eventual native idle after stopping.
 
 - [x] Repair blank-SRAM item replay setup; both player slots pass partner
   Run/Pick, Jump, ground/air snapshot loading and intentional owner release.
+
+### Documentation structure (2026-11-09)
+- [x] Reduce the README to an overview; move player material to the user
+  guide (`docs/guide/`), build/test/packaging to `BUILDING.md` and feature
+  internals to `docs/dev/`.
+- [x] Check relative links, anchors and UTF-8 for all repository Markdown in
+  CTest (`markdown_links_current`) and the `docs` workflow.
+- [ ] Choose the repository that hosts the GitHub Pages site and enable
+  deployment (the `docs` workflow currently deploys only on manual dispatch).
+- [ ] Run the updated `make_release` packaging test on Windows.
