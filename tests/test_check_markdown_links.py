@@ -79,6 +79,18 @@ class CheckerTests(unittest.TestCase):
             self.assertEqual(code, 1)
             self.assertIn("CHANGELOG.md: not valid UTF-8", errors)
 
+    def test_links_into_unchecked_out_submodules_are_skipped(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.write(root, ".gitmodules",
+                       '[submodule "lib"]\n\tpath = vendor/lib\n\turl = https://example.com/lib.git\n')
+            self.write(root, "README.md",
+                       "[a](vendor/lib/README.md) [b](vendor/libother.md)\n")
+            code, errors = self.run_checker(root)
+            self.assertEqual(code, 1)
+            self.assertNotIn("vendor/lib/README.md", errors)
+            self.assertIn("missing link target vendor/libother.md", errors)
+
     def test_excluded_directories_are_skipped(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

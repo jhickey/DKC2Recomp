@@ -6,7 +6,8 @@ existing file or directory. A ``#fragment`` on a Markdown target (or on the
 current file) must match one of that file's headings, using GitHub's
 heading-anchor rules. External URLs are not fetched. A relative target that
 resolves outside the repository root (for example ``../../releases`` from the
-README, which GitHub serves as a web route) is ignored.
+README, which GitHub serves as a web route) is ignored, as is any target
+inside a submodule listed in ``.gitmodules``, which may not be checked out.
 
 Usage:
     check_markdown_links.py [--root DIR] [FILE_OR_DIR ...]
@@ -92,7 +93,18 @@ def anchors_for(path: Path, cache: dict[Path, set[str]]) -> set[str]:
     return cache[path]
 
 
-def check_file(path: Path, root: Path, cache: dict[Path, set[str]]) -> list[str]:
+def submodule_paths(root: Path) -> list[Path]:
+    """Return the resolved paths of submodules declared in .gitmodules."""
+    gitmodules = root / ".gitmodules"
+    if not gitmodules.is_file():
+        return []
+    text = gitmodules.read_text(encoding="utf-8", errors="replace")
+    return [(root / match.strip()).resolve()
+            for match in re.findall(r"^\s*path\s*=\s*(.+)$", text, re.MULTILINE)]
+
+
+def check_file(path: Path, root: Path, cache: dict[Path, set[str]],
+               submodules: list[Path] | None = None) -> list[str]:
     errors = []
     try:
         text = path.read_text(encoding="utf-8")
@@ -113,6 +125,9 @@ def check_file(path: Path, root: Path, cache: dict[Path, set[str]]) -> list[str]
                     resolved.relative_to(root)
                 except ValueError:
                     continue  # outside the repository: a hosting web route
+                if any(resolved == sub or sub in resolved.parents
+                       for sub in submodules or []):
+                    continue  # submodule content may not be checked out
                 if not resolved.exists():
                     errors.append(f"{where}: missing link target {target}")
                     continue
@@ -150,7 +165,9 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     files = collect([p if p.is_absolute() else root / p for p in args.paths] or [root], root)
     cache: dict[Path, set[str]] = {}
-    errors = [error for path in files for error in check_file(path, root, cache)]
+    submodules = submodule_paths(root)
+    errors = [error for path in files
+              for error in check_file(path, root, cache, submodules)]
     for error in errors:
         print(error, file=sys.stderr)
     print(f"checked {len(files)} Markdown files: "
