@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 
 from check_coop_combat import run_route
-from check_coop_route import check
+from check_coop_route import RESCUE_ROW, check, select_hold_frames
 
 
 def main():
@@ -68,20 +68,21 @@ def main():
               all(r["b"]["s"] not in ("0013", "003b") for r in rows),
               "offscreen partner loses independent movement")
         rescued = directory / "rescued.sav"
-        rows = run("rescue", [(0x4000, 181), (0, 60)], upper, rescued)
+        rows = run("rescue", [(0x4000, select_hold_frames()), (0, 60)], upper, rescued)
         mounted(rows)
-        check(all(r["b"]["x"] == 840 for r in rows[:180]), "Select rescue fired before three seconds")
-        check(abs(rows[180]["a"]["x"] - rows[180]["b"]["x"]) == 16 and
-              abs(rows[180]["a"]["y"] - rows[180]["b"]["y"]) <= 16,
+        check(all(r["b"]["x"] == 840 for r in rows[:RESCUE_ROW]),
+              "Select rescue fired before the configured hold")
+        check(abs(rows[RESCUE_ROW]["a"]["x"] - rows[RESCUE_ROW]["b"]["x"]) == 16 and
+              abs(rows[RESCUE_ROW]["a"]["y"] - rows[RESCUE_ROW]["b"]["y"]) <= 16,
               "Select rescue cannot reach mounted Rattly")
         rows = run("rescued-controls", [(0x40000, 20), (0, 5), (0x1000, 1), (0, 35)], rescued)
         check(any(r["b"]["s"] == "0006" for r in rows[25:]) and
               all(r["sprites"][1]["flags"] & 0x10 for r in rows),
               "rescued partner cannot walk/jump after reload")
         if args.waiting_state:
-            rows = run("old-wait-rescue", [(0x4000, 181), (0, 60)], args.waiting_state)
+            rows = run("old-wait-rescue", [(0x4000, select_hold_frames()), (0, 60)], args.waiting_state)
             mounted(rows)
-            check(abs(rows[180]["a"]["x"] - rows[180]["b"]["x"]) == 16,
+            check(abs(rows[RESCUE_ROW]["a"]["x"] - rows[RESCUE_ROW]["b"]["x"]) == 16,
                   "older offscreen waiting snapshot cannot use Select rescue")
     check(all(p.read_bytes() == data for p, data in originals.items()), "external snapshot changed")
     print("Mounted hanger attachment/release, rider controls, superjump survival, rescue and reload passed")

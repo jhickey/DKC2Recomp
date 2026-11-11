@@ -16,8 +16,12 @@ def main():
                         help="Also exercise Donkey/Kiddy replacement callbacks in TEAM mode")
     args = parser.parse_args()
     runner, rom = args.runner.resolve(strict=True), args.rom.resolve(strict=True)
+    # Under the midpoint camera P2 is not pushed back by the screen edge
+    # during SEPARATE_PLAYERS, so it starts further right. The walk is
+    # shortened so the roll defeats the first enemy without reaching the
+    # barrel; P2 then picks it up with the later held Y. 76-82 frames pass.
     pickup = TEAM_START + SEPARATE_PLAYERS + [
-        (0x80080, 90), (0x82080, 30), (0, 60), (0x82080, 60)]
+        (0x80080, 79), (0x82080, 30), (0, 60), (0x82080, 60)]
     cases = {
         "dk_right": (pickup, 1, 0x1A8),
         "dk_left": (pickup + [(0x42000, 20)], -1, 0x1A8),

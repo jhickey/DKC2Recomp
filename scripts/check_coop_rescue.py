@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 
 from check_coop_combat import run_route
-from check_coop_route import TEAM_START, SEPARATE_PLAYERS, check
+from check_coop_route import TEAM_START, SEPARATE_PLAYERS, RESCUE_ROW, check
 
 
 def distance(row):
@@ -33,8 +33,8 @@ def check_rope_snapshot(runner, rom, state):
                               (0x80000, 12), (0x1000, 1), (0, 30)])
         check(all(row["b"]["s"] == ready["b"]["s"] and
                   abs(row["b"]["y"] - row["a"]["y"]) > 500
-                  for row in rows[:180]), "rope rescue fired early")
-        moved = rows[180]
+                  for row in rows[:RESCUE_ROW]), "rope rescue fired early")
+        moved = rows[RESCUE_ROW]
         check(distance(moved) == 16 and moved["a"]["y"] == moved["b"]["y"] and
               moved["b"]["s"] == "0000", "rope rescue did not detach beside teammate")
         # Midpoint scrolling moves the native left screen edge while the
@@ -43,7 +43,7 @@ def check_rope_snapshot(runner, rom, state):
         check(all(row["a"] == baseline[i]["a"] and row["active"] == ready["active"]
                   for i, row in enumerate(rows)), "rope rescue disturbed teammate/leader ownership")
         check(all(row["b"]["s"] not in ("0035", "0036", "0037", "0038", "0013")
-                  for row in rows[180:]), "rescued Kong reentered rope/wait state")
+                  for row in rows[RESCUE_ROW:]), "rescued Kong reentered rope/wait state")
         check(rows[251]["b"]["x"] < rows[239]["b"]["x"] - 8,
               "rescued Kong cannot walk")
         check(min(row["b"]["y"] for row in rows[265:]) < moved["b"]["y"] - 20 and
@@ -78,9 +78,9 @@ def check_water_snapshot(runner, rom, state):
             saved = directory / f"water-p{who + 1}.sav"
             rows = run(f"p{who + 1}", [(4 << shift, 240)] +
                        [(word << shift, frames) for word, frames in after], save=saved)
-            check(all(rows[i][mover] == neutral[i][mover] for i in range(180)),
-                  "water rescue fired before three seconds")
-            moved = rows[180]
+            check(all(rows[i][mover] == neutral[i][mover] for i in range(RESCUE_ROW)),
+                  "water rescue fired before the configured hold")
+            moved = rows[RESCUE_ROW]
             check(distance(moved) == 16 and moved[mover]["y"] == moved[target]["y"] and
                   moved[mover]["s"] == ("0000" if who == 0 else "003d"),
                   "water crossing did not initialize destination movement")
@@ -130,16 +130,16 @@ def check_mount_snapshot(runner, rom, state):
         saved = directory / "rescued.sav"
         rows = run("rescue", [(0x4000, 240), (0x40000, 18), (0x1000, 1), (0, 45)], save=saved)
         check(all(row["b"]["s"] == "0013" and row["b"]["y"] > row["a"]["y"] + 1000
-                  for row in rows[:180]), "mounted partner rescue fired early")
-        check(distance(rows[180]) == 16 and rows[180]["a"]["y"] == rows[180]["b"]["y"] and
-              rows[180]["b"]["s"] == "0000", "waiting partner did not recover beside rider")
+                  for row in rows[:RESCUE_ROW]), "mounted partner rescue fired early")
+        check(distance(rows[RESCUE_ROW]) == 16 and rows[RESCUE_ROW]["a"]["y"] == rows[RESCUE_ROW]["b"]["y"] and
+              rows[RESCUE_ROW]["b"]["s"] == "0000", "waiting partner did not recover beside rider")
         check(all(row["a"] == ready["a"] and row["active"] == ready["active"] and
                   row["animal_slot"] == ready["animal_slot"] and row["animal_type"] == 0x19C
                   for row in rows), "rescue changed rider or mount ownership")
         for key in ("id", "x", "y", "state"):
             check(all(row["sprites"][animal_index][key] == baseline[i]["sprites"][animal_index][key]
                       for i, row in enumerate(rows)), "partner rescue changed Rambi's " + key)
-        check(all(row["b"]["s"] != "0013" for row in rows[180:]), "partner returned to limbo")
+        check(all(row["b"]["s"] != "0013" for row in rows[RESCUE_ROW:]), "partner returned to limbo")
         check(rows[257]["b"]["x"] < rows[239]["b"]["x"] - 15 and
               min(row["b"]["y"] for row in rows[259:]) < rows[257]["b"]["y"] - 20,
               "rescued partner cannot walk/jump independently")
@@ -147,7 +147,7 @@ def check_mount_snapshot(runner, rom, state):
         check(all(row["b"]["s"] == "0000" and row["a"] == ready["a"] and
                   row["animal_type"] == 0x19C for row in loaded), "reloaded partner/mount did not remain playable")
         both = run("both", [(0x4004, 240)])
-        check(distance(both[180]) == 16 and both[180]["a"] == ready["a"],
+        check(distance(both[RESCUE_ROW]) == 16 and both[RESCUE_ROW]["a"] == ready["a"],
               "both Select holds did not recover the follower beside Rambi")
         rider = run("rider-only", [(4, 240)])
         check(all(row["a"] == ready["a"] and row["animal_type"] == 0x19C for row in rider),
@@ -193,9 +193,10 @@ def main():
             mover, target = ("a", "b") if who == 0 else ("b", "a")
             select = 4 << (who * 12)
             rows = run(name + "-hold", [(select, 185)], state=separated)
-            check(all(distance(row) > 60 for row in rows[:180]), name + ": rescued too early")
+            check(all(distance(row) > 60 for row in rows[:RESCUE_ROW]), name + ": rescued too early")
             first = next((i for i, row in enumerate(rows) if distance(row) <= 20), None)
-            check(first is not None and 180 <= first <= 183, name + ": three-second rescue did not fire")
+            check(first is not None and RESCUE_ROW <= first <= RESCUE_ROW + 3,
+                  name + ": timed rescue did not fire")
             check(abs(rows[first][mover]["x"] - rows[first][target]["x"]) == 16,
                   name + ": destination was not beside teammate")
             check(rows[first][mover]["y"] == rows[first][target]["y"],
@@ -207,21 +208,21 @@ def main():
             # a guest lag frame. Keep this check on the known idle seed; the
             # one-shot latch and rearming after firing are covered by units.
             rows = run(name + "-release", [(select, 90), (0, 1), (select, 185)], state=separated)
-            check(all(distance(row) > 60 for row in rows[:271]) and distance(rows[-1]) <= 20,
+            check(all(distance(row) > 60 for row in rows[:91 + RESCUE_ROW]) and distance(rows[-1]) <= 20,
                   name + ": brief release did not reset the charge")
             pending = directory / f"{name}-pending.sav"
             run(name + "-pending", [(select, 90)], state=separated, save=pending)
             rows = run(name + "-reload", [(select, 185)], state=pending)
-            check(all(distance(row) > 60 for row in rows[:180]) and distance(rows[-1]) <= 20,
+            check(all(distance(row) > 60 for row in rows[:RESCUE_ROW]) and distance(rows[-1]) <= 20,
                   name + ": loading did not reset pending hold")
-            print(name + ": three-second timing, own-player destination, no tag, release and load resets passed")
+            print(name + ": configured hold timing, own-player destination, no tag, release and load resets passed")
 
         rows = run("both", [(0x4004, 185)], state=separated)
         check(distance(rows[-1]) <= 20 and rows[-1]["a"] == neutral[-1]["a"],
               "simultaneous holds must bring follower to camera leader once")
         rows = run("pause", [(4, 90), (12, 1), (4, 210), (12, 1), (4, 185)], state=separated)
         check(any(row["kong_flags"] & 0x40 for row in rows[95:295]), "pause route never paused")
-        check(all(distance(row) > 60 for row in rows[:481]) and distance(rows[-1]) <= 20,
+        check(all(distance(row) > 60 for row in rows[:302 + RESCUE_ROW]) and distance(rows[-1]) <= 20,
               "pause did not reset the Select hold")
         print("Both-hold priority and pause reset passed")
 

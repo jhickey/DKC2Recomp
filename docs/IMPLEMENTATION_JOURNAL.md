@@ -8615,3 +8615,41 @@ at <https://jhickey.github.io/DKC2Recomp/>. The `docs` workflow deploys on
 pushes to that fork's `main` and on manual runs, and only builds in any
 other repository. `BUILDING.md` now clones from the fork, matching the
 `snesrecomp` submodule, which already comes from `jhickey/snesrecomp`.
+
+## 2026-11-10 - Co-op routes updated for the shared-screen camera
+
+The four private co-op checks that failed after merging PR #1 (DKC2R-1)
+were test problems, not runtime regressions. Each route was traced on the
+merged runtime and on a pre-merge `dde87c1` build, both with `snesrecomp`
+`32a0846`.
+
+- `check_coop_rescue.py` hard-coded a three-second Select hold, but
+  `config/coop_tuning.cfg` now sets 2000 ms (121 frames), and the rescue
+  fires on time. `check_coop_route.py` now derives the expected trace row
+  from the config with the same rounding as `runner/dkc2_coop_assist.h`.
+  `check_coop_snake_hooks.py` and the rescue script's rope, water and
+  Rambi snapshot paths use the same value. Those paths need private saves
+  and were not run.
+- `check_coop_handoff.py`: P2 stood still at the start while P1 walked
+  into the first enemy. Before the merge the camera followed P1 and the
+  left screen edge pushed P2 along. The midpoint camera instead holds P1
+  at the shared screen edge (x=525 with P2 at 301), so P1 was never hurt.
+  P2 now walks with P1 and stops short of the enemy, and after the handoff
+  it jumps over the enemy walking toward it.
+- `check_coop_barrels.py`: before the merge the right screen edge pushed
+  P2 back during `SEPARATE_PLAYERS`. Without that P2 started its roll
+  about 26 px further right and grabbed the barrel early. The shared walk
+  is now 79 frames instead of 90; 76-82 all pass.
+- `check_coop_lifecycle.py`: PR #1's edited first segment held P1 still,
+  which pinned P2 at the screen edge (x=807) before the enemy. The original
+  route works on the merged runtime and is restored. Revival now places P2
+  exactly beside P1 (an intended PR #1 change), so P2 reaches the next
+  enemy about 20 frames sooner. Its movement is sampled at row 256 instead
+  of 260, just before that contact.
+
+Every assertion is unchanged apart from the sample rows. The handoff
+death/resume and DK-barrel lifecycle assertions had not run on the merged
+runtime before this change; they now pass.
+
+Validation on macOS with the ROM configured: 76/76 CTest checks pass.
+Windows has not been run.

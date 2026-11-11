@@ -758,6 +758,11 @@ three grab orders, plus eventual native idle after stopping.
 - [x] Pole grab after revisiting/respawning: expire stale jump anchors, restore
   live active-player loss metadata, preserve dead teammate and own controls.
 
+- [x] Update the barrels, handoff and lifecycle routes for the midpoint
+  camera; derive Select-rescue timing from `config/coop_tuning.cfg`.
+- [ ] Run the rescue and snake-hook snapshot paths (private saves) with the
+  configured two-second hold.
+
 - [x] Rollercoaster independent jumps: either port, simultaneous/staggered
   jumps, own seats, exact midair reload, either rider hurt, moving survivor
   and control handoff, cart collision and native final-loss/Game Over.

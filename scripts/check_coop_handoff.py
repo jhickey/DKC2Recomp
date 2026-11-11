@@ -16,8 +16,13 @@ def main():
     runner, rom = args.runner.resolve(strict=True), args.rom.resolve(strict=True)
     with tempfile.TemporaryDirectory(prefix="dkc2-coop-handoff-") as tmp:
         directory = Path(tmp)
+        # The midpoint camera keeps both Kongs on one screen, so P2 walks
+        # with P1 before stopping short of the first enemy. P1 runs into it
+        # alone; the surviving P2 later jumps over the enemy as it walks
+        # toward P2, rather than walking into it.
         data = run_route(runner, rom, directory, "handoff",
-            TEAM_START + [(0x40000, 1), (0, 1), (0x80, 360), (0, 180), (0x80000, 50)],
+            TEAM_START + [(0x40000, 1), (0, 1), (0x80080, 250), (0x80, 110),
+                          (0, 100), (0x81000, 50)],
             save=directory / "survivor.sav")
         hurt = next(r for r in data[3020:] if r["a"]["s"] == "0024")
         switched = next(r for r in data[hurt["frame"]:] if r["active"] == "0e40")

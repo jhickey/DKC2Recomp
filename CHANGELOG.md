@@ -19,11 +19,11 @@
   research from the dkc2-c project. Generated code is unchanged apart from
   function names.
 - Recorded the first macOS source build since v0.0.6. With the pinned
-  `snesrecomp` analyzer fix for never-returning calls, 72 of 76 tests pass,
-  including the private ROM checks. The four failures are the co-op
-  barrels, handoff, lifecycle and rescue checks, which fail only with the
-  simultaneous co-op merge and remain open. The build before that merge
-  passes every test on the same analyzer. Windows verification is pending.
+  `snesrecomp` analyzer fix for never-returning calls, all 76 tests pass,
+  including the private ROM checks. Windows verification is pending.
+- Updated the co-op barrels, handoff and lifecycle routes for the
+  shared-screen midpoint camera, and made the Select-rescue checks follow
+  the configured hold time instead of a fixed three seconds.
 
 - Repaired the blank-SRAM item-input regression setup; both player slots now
   pass the existing ownership checks, with an additional native-chest assertion.

@@ -16,6 +16,20 @@ TEAM_START = [(0, 900), (8, 8), (0, 188), (8, 8), (0, 190),
               (0x20, 8), (0, 42), (8, 8), (0, 900),
               (0x100, 8), (0, 300), (0x100, 8), (0, 450)]
 SEPARATE_PLAYERS = [(0x81, 120), (0, 40), (0x81000, 120), (0, 40)]
+TUNING = Path(__file__).resolve().parents[1] / "config" / "coop_tuning.cfg"
+
+
+def select_hold_frames(tuning=TUNING):
+    """Compiled Select-rescue hold in console frames, as runner/dkc2_coop_assist.h rounds it."""
+    for line in tuning.read_text(encoding="ascii").splitlines():
+        words = line.split()
+        if words[:2] == ["#define", "DKC2_COOP_SELECT_HOLD_MS"]:
+            return (int(words[2]) * 60 + 999) // 1000 + 1
+    raise AssertionError(f"{tuning}: DKC2_COOP_SELECT_HOLD_MS not defined")
+
+
+# Trace row in which a Select hold that starts on row 0 has moved the Kong.
+RESCUE_ROW = select_hold_frames() - 1
 
 
 def check(condition, message):
