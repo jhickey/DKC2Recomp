@@ -18,8 +18,12 @@
   routines in the symbol database and recompiler configuration, using
   research from the dkc2-c project. Generated code is unchanged apart from
   function names.
-- Recorded the first macOS source build since v0.0.6: 63 of 69 tests pass;
-  the six private co-op integration checks fail and remain open.
+- Recorded the first macOS source build since v0.0.6. With the pinned
+  `snesrecomp` analyzer fix for never-returning calls, 72 of 76 tests pass,
+  including the private ROM checks. The four failures are the co-op
+  barrels, handoff, lifecycle and rescue checks, which fail only with the
+  simultaneous co-op merge and remain open. The build before that merge
+  passes every test on the same analyzer. Windows verification is pending.
 
 - Repaired the blank-SRAM item-input regression setup; both player slots now
   pass the existing ownership checks, with an additional native-chest assertion.
